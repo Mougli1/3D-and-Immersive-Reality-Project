@@ -1,0 +1,43 @@
+# Fichiers et dossiers générés par Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Mm]emory[Bb]ackups/
+
+# Dossiers de build (le jeu final)
+/[Bb]uild/
+/[Bb]uilds/
+
+# Paramètres personnels de l'éditeur
+/[Uu]ser[Ss]ettings/
+
+# Fichiers de configuration spécifiques à l'IDE (Visual Studio, Rider...)
+.vs/
+.idea/
+*.suo
+*.user
+*.userprefs
+
+# Fichiers de build .NET
+*.pidb
+*.svd
+*.pdb
+*.mdb
+*.opendb
+sysinfo.txt
+
+# Artefacts de build (le jeu compilé)
+*.apk
+*.aab
+*.app
+*.exe
+*.ipa
+*.xap
+*.deb
+*.dmg
+
+# Fichiers système courants
+.DS_Store
+._*
+Thumbs.db
