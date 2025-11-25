@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerCC : MonoBehaviour {
-    public bool useDesktopControls = true; // <-- cochez false sur le VR Player
+    public bool useDesktopControls = false; // <-- cochez false sur le VR Player
 
     public float moveSpeed = 3.5f;
     public float mouseSensitivity = 120f;
