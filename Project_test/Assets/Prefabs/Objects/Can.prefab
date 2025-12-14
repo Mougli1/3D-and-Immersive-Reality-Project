@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eac571e81ebfb4ca0930ec19afb87f78, type: 3}
       propertyPath: m_Name
-      value: Lata
+      value: Can
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -99,6 +99,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eac571e81ebfb4ca0930ec19afb87f78, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6090771879979975162}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eac571e81ebfb4ca0930ec19afb87f78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6343471888623830125}
   m_SourcePrefab: {fileID: 100100000, guid: eac571e81ebfb4ca0930ec19afb87f78, type: 3}
 --- !u!1 &7338205426419641428 stripped
 GameObject:
@@ -282,6 +285,20 @@ CapsuleCollider:
   m_Height: 0.18
   m_Direction: 1
   m_Center: {x: 0.000000007450581, y: 0.0000000037252903, z: -0.000000014901161}
+--- !u!114 &6343471888623830125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7338205426419641428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0b615769cd84a34bf3d6077a87fdd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrashItem
+  trashName: Canette
+  disappearDelay: 4
 --- !u!4 &7970626250192877294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eac571e81ebfb4ca0930ec19afb87f78, type: 3}

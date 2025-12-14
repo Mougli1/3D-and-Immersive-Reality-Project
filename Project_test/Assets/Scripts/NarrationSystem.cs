@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class NarrationSystem : MonoBehaviour {
     [Header("UI")]
@@ -9,9 +10,12 @@ public class NarrationSystem : MonoBehaviour {
     [SerializeField] private Button nextButton;
     [SerializeField] private Button skipButton;
 
-    [Header("Clavier")]
-    [SerializeField] private KeyCode nextKey = KeyCode.E;
-    [SerializeField] private KeyCode closeKey = KeyCode.X;
+    [Header("XR (manette droite)")]
+    [Tooltip("Ex: XRI RightHand Interaction / Activate (trigger)")]
+    [SerializeField] private InputActionReference nextAction;
+
+    [Tooltip("Ex: XRI RightHand Interaction / Select (grip/grab)")]
+    [SerializeField] private InputActionReference skipAction;
 
     [Header("Optionnel")]
     [SerializeField] private PlayerControllerCC player;
@@ -23,16 +27,46 @@ public class NarrationSystem : MonoBehaviour {
     public System.Action<string> OnDialogueStarted;
     public System.Action<string> OnDialogueEnded;
 
+    private void OnEnable()
+    {
+        if (nextAction && nextAction.action != null)
+        {
+            nextAction.action.Enable();
+            nextAction.action.performed += OnNextPerformed;
+        }
+
+        if (skipAction && skipAction.action != null)
+        {
+            skipAction.action.Enable();
+            skipAction.action.performed += OnSkipPerformed;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (nextAction && nextAction.action != null)
+            nextAction.action.performed -= OnNextPerformed;
+
+        if (skipAction && skipAction.action != null)
+            skipAction.action.performed -= OnSkipPerformed;
+    }
+
+    private void OnNextPerformed(InputAction.CallbackContext ctx)
+    {
+        if (!IsPlaying) return;
+        Next();
+    }
+
+    private void OnSkipPerformed(InputAction.CallbackContext ctx)
+    {
+        if (!IsPlaying) return;
+        Close();
+    }
+
     private void Start() {
         if (panelSubtitles) panelSubtitles.SetActive(false);
         if (nextButton) nextButton.onClick.AddListener(Next);
         if (skipButton) skipButton.onClick.AddListener(Close);
-    }
-
-    private void Update() {
-        if (!IsPlaying) return;
-        if (Input.GetKeyDown(nextKey)) Next();
-        if (Input.GetKeyDown(closeKey)) Close();
     }
 
     public void StartDialogue(DialogueAsset asset) {

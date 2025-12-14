@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   id: intro
   lines:
-  - Je suis la Gardienne de Heartwood.
-  - "Aujourd\u2019hui, d\xE9couvre les bases : approche les objets et r\xE9cup\xE8re-les."
-  - "Reviens me parler quand tu as essay\xE9."
+  - "Bonjour, voyageur\u2026 Je suis la Gardienne de Heartwood. Merci d\u2019\xEAtre
+    venu."
+  - "La for\xEAt est belle, mais elle souffre. Les d\xE9chets attirent le danger
+    et blessent les animaux."
+  - "Votre premi\xE8re mission : ramasser tous les d\xE9chets de la zone. Ne laissez
+    rien derri\xE8re vous."

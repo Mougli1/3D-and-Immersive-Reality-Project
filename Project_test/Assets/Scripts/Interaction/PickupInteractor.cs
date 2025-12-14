@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickupInteractor : MonoBehaviour {
     [Header("Ramassage simple")]
     [SerializeField] private float pickupRadius = 2.0f;
     [SerializeField] private LayerMask itemMask;
-    [SerializeField] private KeyCode pickupKey = KeyCode.F;
+    [SerializeField] private Key pickupKey = Key.F;
     [SerializeField] private Transform binEntryPoint;
     [SerializeField] private NarrationSystem narration;
 
@@ -15,9 +16,13 @@ public class PickupInteractor : MonoBehaviour {
     private int currentCount = 0;
 
     void Update() {
-        if (narration && narration.IsPlaying) return;
-        if (Input.GetKeyDown(pickupKey)) TryPickupNearest();
+    if (narration && narration.IsPlaying) return;
+
+    // Nouveau système d’input
+    if (Keyboard.current != null && Keyboard.current[pickupKey].wasPressedThisFrame) {
+        TryPickupNearest();
     }
+}
 
     void TryPickupNearest() {
         if (!binEntryPoint) { Debug.LogWarning("[Pickup] EntryPoint non assigné."); return; }

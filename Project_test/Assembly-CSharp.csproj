@@ -49,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Interaction/PickupInteractor.cs" />
+    <Compile Include="Assets/Scripts/TrashQuestManager.cs" />
+    <Compile Include="Assets/Scripts/ToastSystem.cs" />
     <Compile Include="Assets/Scripts/PlayerControllerCC.cs" />
+    <Compile Include="Assets/Scripts/ProgressManager.cs" />
     <Compile Include="Assets/Scripts/Interaction/AnimateHandOnInput.cs" />
     <Compile Include="Assets/Scripts/Interaction/InputTest.cs" />
     <Compile Include="Assets/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/CTI_URP_CustomWind.cs" />
@@ -57,12 +60,14 @@
     <Compile Include="Assets/Grass And Flowers Pack 1/Example Scene/SimpleTextureDrawing.cs" />
     <Compile Include="Assets/Scripts/DialogueAsset.cs" />
     <Compile Include="Assets/Scripts/StatueAutoTrigger.cs" />
+    <Compile Include="Assets/Scripts/TrashItem.cs" />
     <Compile Include="Assets/Forst/CTI Runtime Components/CTI Runtime Components HDRP 12plus/Scripts/CTI_HDRP_CustomWind.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/Scripts/VRMenuController.cs" />
     <Compile Include="Assets/Scripts/NarrationSystem.cs" />
     <Compile Include="Assets/Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/MouseLook.cs" />
     <Compile Include="Assets/Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/PlayerMovement.cs" />
+    <Compile Include="Assets/Scripts/InGameMenu.cs" />
     <Compile Include="Assets/Scripts/Interaction/TeleportationActivator.cs" />
   </ItemGroup>
   <ItemGroup>
