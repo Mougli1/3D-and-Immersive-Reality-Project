@@ -18,12 +18,46 @@ public class TrashItem : MonoBehaviour
     private bool collected = false;
 
     private TrashQuestManager manager;
+
+    [SerializeField] private string trashId;
+    public string TrashId => trashId;
+
+    #if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(trashId))
+            trashId = System.Guid.NewGuid().ToString();
+    }
+
+    [ContextMenu("Regenerate ID")]
+    private void RegenerateId()
+    {
+        trashId = System.Guid.NewGuid().ToString();
+    }
+    #endif
+
     public void SetManager(TrashQuestManager m) => manager = m;
 
     void Awake()
     {
         grab = GetComponent<XRGrabInteractable>();
     }
+
+    IEnumerator Start()
+    {
+        // On attend que ProgressManager soit prêt
+        while (ProgressManager.Instance == null)
+            yield return null;
+
+        if (!string.IsNullOrEmpty(trashId) &&
+            ProgressManager.Instance.IsTrashCollected(trashId))
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+    }
+
+
 
     void OnEnable()
     {
@@ -79,7 +113,9 @@ public class TrashItem : MonoBehaviour
         collected = true;
 
         Debug.Log($"[Trash] Collected: {trashName}");
-        ProgressManager.Instance?.AddTrash(1);
+        bool added = ProgressManager.Instance != null && ProgressManager.Instance.MarkTrashCollected(trashId);
+        Debug.Log($"[Trash] MarkTrashCollected name={trashName} id='{trashId}' added={added} now={ProgressManager.Instance?.TrashCollected}");
+
         manager?.NotifyTrashCollected(this);
 
         // On cache le texte au moment où ça "rentre dans le sac"

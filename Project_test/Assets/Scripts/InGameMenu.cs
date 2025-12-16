@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,11 +11,13 @@ public class InGameMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI trashLabel;
     [SerializeField] private Slider trashProgressBar;
 
-    [Header("Input (manette droite)")]
-    [Tooltip("Ex: XRI RightHand Interaction / Primary Button (A)")]
+    [Header("Input")]
     [SerializeField] private InputActionReference toggleMenuAction;
 
     bool isOpen = false;
+
+    Coroutine bindRoutine;
+    bool subscribed = false;
 
     void OnEnable()
     {
@@ -24,8 +27,8 @@ public class InGameMenu : MonoBehaviour
             toggleMenuAction.action.performed += OnToggle;
         }
 
-        if (ProgressManager.Instance != null)
-            ProgressManager.Instance.OnTrashProgressChanged += OnTrashProgress;
+        // ✅ On s’abonne quand ProgressManager est prêt
+        bindRoutine = StartCoroutine(BindToProgressManager());
     }
 
     void OnDisable()
@@ -33,17 +36,32 @@ public class InGameMenu : MonoBehaviour
         if (toggleMenuAction && toggleMenuAction.action != null)
             toggleMenuAction.action.performed -= OnToggle;
 
-        if (ProgressManager.Instance != null)
+        if (bindRoutine != null) StopCoroutine(bindRoutine);
+        bindRoutine = null;
+
+        if (subscribed && ProgressManager.Instance != null)
             ProgressManager.Instance.OnTrashProgressChanged -= OnTrashProgress;
+
+        subscribed = false;
+    }
+
+    IEnumerator BindToProgressManager()
+    {
+        while (ProgressManager.Instance == null)
+            yield return null;
+
+        // sécurité anti-double abonnement
+        ProgressManager.Instance.OnTrashProgressChanged -= OnTrashProgress;
+        ProgressManager.Instance.OnTrashProgressChanged += OnTrashProgress;
+        subscribed = true;
+
+        // ✅ Init UI immédiate
+        OnTrashProgress(ProgressManager.Instance.TrashCollected, ProgressManager.Instance.TrashTotal);
     }
 
     void Start()
     {
         SetOpen(false);
-
-        // Init visuel au démarrage
-        if (ProgressManager.Instance != null)
-            OnTrashProgress(ProgressManager.Instance.TrashCollected, ProgressManager.Instance.TrashTotal);
     }
 
     void OnToggle(InputAction.CallbackContext ctx)
