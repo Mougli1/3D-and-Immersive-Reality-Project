@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45091f957f709485384a3b4f7718cb75, type: 3}
-  m_Name: RamassageDebrief
+  m_Name: FinTriDechets
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   id: intro
   lines:
-  - "Bien jou\xE9. Tu as d\xE9barrass\xE9 la clairi\xE8re."
-  - "Le tri viendra ensuite : chaque cat\xE9gorie a son bac."
-  - "Quand tu es pr\xEAt(e), reviens me voir."
+  - "Bien jou\xE9. Tu as tri\xE9 tous les d\xE9chets."
+  - Super
+  - 'Maintenant la suite : planter des arbres.'

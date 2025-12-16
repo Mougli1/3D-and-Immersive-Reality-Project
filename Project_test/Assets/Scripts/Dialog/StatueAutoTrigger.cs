@@ -8,9 +8,11 @@ public class StatueAutoTrigger : MonoBehaviour
     [Header("Dialogues")]
     [SerializeField] private DialogueAsset introDialogue;
     [SerializeField] private DialogueAsset ramassageBriefDialogue;
+    [SerializeField] private DialogueAsset triBriefDialogue;
 
     [Header("Options")]
-    [SerializeField] private bool forceIntroFirst = true; // si true: on joue intro au moins 1 fois avant de passer au brief
+    [SerializeField] private bool forceIntroFirst = true;
+    [SerializeField] private bool forceRamassageBriefFirst = true;
     [SerializeField] private bool debugLogs = false;
 
     private void Reset()
@@ -45,25 +47,42 @@ public class StatueAutoTrigger : MonoBehaviour
 
         var pm = ProgressManager.Instance;
 
-        bool trashComplete = pm != null && pm.TrashTotal > 0 && pm.TrashCollected >= pm.TrashTotal;
+        bool introSeen = pm != null && pm.IsDialogueSeen(introDialogue.id);
 
-        // Choix du dialogue à jouer
+        bool trashComplete = pm != null && pm.TrashTotal > 0 && pm.TrashCollected >= pm.TrashTotal;
+        bool sortComplete  = pm != null && pm.SortedTotal > 0 && pm.SortedCount >= pm.SortedTotal;
+
         DialogueAsset target = introDialogue;
 
-        if (trashComplete && ramassageBriefDialogue != null)
+        // 1) Si tri terminé -> triBrief
+        if (sortComplete && triBriefDialogue != null)
         {
-            if (!forceIntroFirst || (pm != null && pm.IsDialogueSeen(introDialogue.id)))
+            // Optionnel : on force l’ordre "Intro -> RamassageBrief -> TriBrief"
+            bool briefSeen = (ramassageBriefDialogue == null) || (pm != null && pm.IsDialogueSeen(ramassageBriefDialogue.id));
+            if (!forceRamassageBriefFirst || briefSeen)
+                target = triBriefDialogue;
+            else if (ramassageBriefDialogue != null)
                 target = ramassageBriefDialogue;
         }
+        // 2) Sinon si ramassage terminé -> ramassageBrief
+        else if (trashComplete && ramassageBriefDialogue != null)
+        {
+            target = ramassageBriefDialogue;
+        }
+
+        // Force à voir l’intro au moins 1 fois
+        if (forceIntroFirst && !introSeen)
+            target = introDialogue;
 
         bool seen = pm != null && pm.IsDialogueSeen(target.id);
 
+        // si déjà vu -> dernière ligne seulement
         if (seen && target.lines != null && target.lines.Length > 0)
-            narration.StartDialogue(target, target.lines.Length - 1);  // dernière ligne
+            narration.StartDialogue(target, target.lines.Length - 1);
         else
-            narration.StartDialogue(target);                           // dialogue complet
+            narration.StartDialogue(target);
 
         if (debugLogs)
-            Debug.Log($"[StatueAutoTrigger] Play={target.id} seen={seen} trashComplete={trashComplete}");
+            Debug.Log($"[StatueAutoTrigger] Play={target.id} seen={seen} trashComplete={trashComplete} sortComplete={sortComplete}");
     }
 }

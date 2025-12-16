@@ -318,7 +318,9 @@ MonoBehaviour:
   narration: {fileID: 483119536}
   introDialogue: {fileID: 11400000, guid: 80d4a2bb673fa4bc0ab7a97e45382b5e, type: 2}
   ramassageBriefDialogue: {fileID: 11400000, guid: e9682dffd0d50440fac82dd8deb76819, type: 2}
+  triBriefDialogue: {fileID: 11400000, guid: 901883af568c948eb95e29ce62d772f1, type: 2}
   forceIntroFirst: 1
+  forceRamassageBriefFirst: 1
   debugLogs: 1
 --- !u!135 &74177560
 SphereCollider:
@@ -413,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3517d01b5095640e997ae5bd17eed956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBinProximityTrigger
-  lidScript: {fileID: 0}
+  lidScript: {fileID: 1388138366}
 --- !u!135 &114303743
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -832,7 +834,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 688486975}
+  m_Father: {fileID: 1100657703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1226,7 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf05bc95353f4f7593f927daf9d1fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBin
-  typeAccepte: 0
+  typeAccepte: 1
   lidScript: {fileID: 463604510}
 --- !u!1 &299383807 stripped
 GameObject:
@@ -1278,17 +1280,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300726227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.027288437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1323070883}
-  m_Father: {fileID: 1464823907}
+  m_Father: {fileID: 1100657703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 195.00966, y: -11.000425}
+  m_SizeDelta: {x: -720, y: -390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &307417237
 GameObject:
@@ -1582,16 +1584,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350559062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.017894745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1464823907}
+  m_Father: {fileID: 1100657703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 199.99516, y: -11.000425}
+  m_SizeDelta: {x: -700, y: -390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &350559064
 MonoBehaviour:
@@ -2491,7 +2493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3517d01b5095640e997ae5bd17eed956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBinProximityTrigger
-  lidScript: {fileID: 0}
+  lidScript: {fileID: 1986603406}
 --- !u!135 &538365188
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2805,17 +2807,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560742568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.017894745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1721528859}
-  m_Father: {fileID: 1464823907}
+  m_Father: {fileID: 1100657703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 199.99516, y: -11.000425}
+  m_SizeDelta: {x: -720, y: -780}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &568469116
 PrefabInstance:
@@ -3033,6 +3035,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dechet
   type: 0
+  dechetName: Tissue
+  showTriHint: 0
+  dechetId: 0e7cf73c-4416-4f9e-b832-15cec49f6bf5
+  despawnIfAlreadySorted: 1
 --- !u!1 &674469335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,7 +3247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &688486975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3255,9 +3261,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1100657703}
-  - {fileID: 238361843}
-  - {fileID: 2048097869}
-  - {fileID: 1464823907}
   m_Father: {fileID: 1986675687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3304,7 +3307,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &688486978
 Canvas:
   m_ObjectHideFlags: 0
@@ -3391,7 +3394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
   trashTotal: 2
-  sortedTotal: 1
+  sortedTotal: 2
 --- !u!1 &698945492
 GameObject:
   m_ObjectHideFlags: 0
@@ -4752,7 +4755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1100657703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4769,6 +4772,12 @@ RectTransform:
   - {fileID: 1826619857}
   - {fileID: 741435886}
   - {fileID: 2033568631}
+  - {fileID: 238361843}
+  - {fileID: 2048097869}
+  - {fileID: 1464823907}
+  - {fileID: 350559063}
+  - {fileID: 300726228}
+  - {fileID: 560742569}
   m_Father: {fileID: 688486975}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5586,7 +5595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3517d01b5095640e997ae5bd17eed956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBinProximityTrigger
-  lidScript: {fileID: 0}
+  lidScript: {fileID: 463604510}
 --- !u!135 &1415627398
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5652,6 +5661,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 601952498}
+  - {fileID: 1872205612}
   - {fileID: 1310156475}
   - {fileID: 1506573557}
   - {fileID: 292505487}
@@ -5764,11 +5774,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.017894745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 350559063}
-  - {fileID: 300726228}
-  - {fileID: 560742569}
-  m_Father: {fileID: 688486975}
+  m_Children: []
+  m_Father: {fileID: 1100657703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7362,6 +7369,106 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 1670095528}
   handAnimator: {fileID: 1839701230}
+--- !u!1001 &1872205611
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1429388244}
+    m_Modifications:
+    - target: {fileID: 5760624886294064807, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_Name
+      value: Soda Can Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122222978138721668, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: trashId
+      value: b496f21a-56e4-4e73-9ade-070557c86f32
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.477
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.491
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9091763
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.41641146
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -49.216
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7122222978138721668, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5760624886294064807, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1872205614}
+  m_SourcePrefab: {fileID: 100100000, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+--- !u!4 &1872205612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9109407161895461157, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+  m_PrefabInstance: {fileID: 1872205611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1872205613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5760624886294064807, guid: 8d26638f4163b4833a9e0469dd711d81, type: 3}
+  m_PrefabInstance: {fileID: 1872205611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1872205614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872205613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6527df2668e2148158823c70fb9521f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dechet
+  type: 1
+  dechetName: Canette de soda
+  showTriHint: 0
+  dechetId: 9867ce5a-426f-486e-af4d-0bac2e597fd3
+  despawnIfAlreadySorted: 1
 --- !u!1 &1944928540
 GameObject:
   m_ObjectHideFlags: 0
@@ -7610,7 +7717,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 688486975}
+  m_Father: {fileID: 1100657703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -10,6 +10,7 @@ public class SaveData
     public List<string> seenDialogueIds = new List<string>();
     public List<string> sortedTrashIds = new List<string>();
 
+
 }
 
 public class ProgressManager : MonoBehaviour
@@ -139,7 +140,7 @@ public class ProgressManager : MonoBehaviour
         collectedTrashSet.Clear();
         seenDialogueSet.Clear();
         sortedTrashSet.Clear();
-        trashObjectiveCompletedFired = false; // ✅ AJOUT
+        trashObjectiveCompletedFired = false;
         Save();
         NotifyTrash();
         Debug.Log("[Progress] Reset done.");
