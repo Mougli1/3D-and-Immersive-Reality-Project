@@ -48,12 +48,12 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.2.3f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/Editor/CTI_URPWindDrawer.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
-    <Compile Include="Assets/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/Editor/CTI_URP_ShaderGUI.cs" />
-    <Compile Include="Assets/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/Editor/CTI_URPTransDrawer.cs" />
-    <Compile Include="Assets/Forst/Conifers [BOTD]/Installer/Editor/ConifersInstaller.cs" />
-    <Compile Include="Assets/Forst/Conifers [BOTD]/Installer/Editor/LaunchConifersInstaller.cs" />
+    <Compile Include="Assets/Import/Forst/Conifers [BOTD]/Installer/Editor/LaunchConifersInstaller.cs" />
+    <Compile Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/Editor/CTI_URPWindDrawer.cs" />
+    <Compile Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/Editor/CTI_URP_ShaderGUI.cs" />
+    <Compile Include="Assets/Import/Forst/Conifers [BOTD]/Installer/Editor/ConifersInstaller.cs" />
+    <Compile Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/Editor/CTI_URPTransDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

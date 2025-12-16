@@ -105,4 +105,21 @@ public class NarrationSystem : MonoBehaviour {
 
         if (player) player.SetInputEnabled(true);
     }
+
+    public void StartDialogue(DialogueAsset asset, int startLineIndex)
+    {
+        if (IsPlaying || asset == null) return;
+
+        current = asset;
+
+        int len = (current.lines != null) ? current.lines.Length : 0;
+        if (len <= 0) index = -1;
+        else index = Mathf.Clamp(startLineIndex - 1, -1, len - 1);
+
+        if (panelSubtitles) panelSubtitles.SetActive(true);
+        OnDialogueStarted?.Invoke(current.id);
+
+        if (player) player.SetInputEnabled(false);
+        Next();
+    }
 }
