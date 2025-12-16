@@ -9,11 +9,8 @@ public class Dechet : MonoBehaviour
     public enum TypeDechet { Papier, Emballages, Verre, Organique }
     public TypeDechet type;
 
-    [Header("Infos UI")]
+    [Header("UI")]
     public string dechetName = "Déchet";
-
-    [Tooltip("Affiche un indice de tri (jaune/verte/compost) quand on attrape l'objet.")]
-    [SerializeField] private bool showTriHint = true;
 
     [Header("Save")]
     [SerializeField] private string dechetId;
@@ -22,8 +19,19 @@ public class Dechet : MonoBehaviour
     [Tooltip("Si coché, l'objet se détruit au chargement s'il a déjà été trié (Continue).")]
     [SerializeField] private bool despawnIfAlreadySorted = true;
 
+    // --- cache / état ---
     private XRGrabInteractable grab;
+    private Rigidbody rb;
+    private Collider[] cols;
+    private Renderer[] rends;
+
+    private Vector3 spawnPos;
+    private Quaternion spawnRot;
+
+    private bool toastLocked = false;
+    private bool resetting = false;
     private bool sorted = false;
+    private Coroutine resetRoutine;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -42,24 +50,22 @@ public class Dechet : MonoBehaviour
     private void Awake()
     {
         grab = GetComponent<XRGrabInteractable>();
+        rb = GetComponent<Rigidbody>();
+        cols = GetComponentsInChildren<Collider>(true);
+        rends = GetComponentsInChildren<Renderer>(true);
+
+        spawnPos = transform.position;
+        spawnRot = transform.rotation;
     }
 
     private void OnEnable()
     {
-        if (grab != null)
-        {
-            grab.selectEntered.AddListener(OnGrab);
-            grab.selectExited.AddListener(OnRelease);
-        }
+        grab.selectExited.AddListener(OnRelease);
     }
 
     private void OnDisable()
     {
-        if (grab != null)
-        {
-            grab.selectEntered.RemoveListener(OnGrab);
-            grab.selectExited.RemoveListener(OnRelease);
-        }
+        grab.selectExited.RemoveListener(OnRelease);
     }
 
     private IEnumerator Start()
@@ -73,38 +79,100 @@ public class Dechet : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnGrab(SelectEnterEventArgs args)
-    {
-        if (sorted) return;
-
-        string msg = $"À trier : {dechetName}";
-        if (showTriHint) msg += $"\n→ {GetTriHint()}";
-
-        ToastSystem.Instance?.ShowPersistent(msg);
-    }
-
     private void OnRelease(SelectExitEventArgs args)
     {
-        if (sorted) return; // si on est en train d’être trié/détruit, on ne coupe pas le toast “réussite”
+        // Ne pas couper un toast "résultat" (mauvais/bon tri) en relâchant
+        if (toastLocked) return;
         ToastSystem.Instance?.Hide();
     }
 
-    // Appelé par la poubelle quand le tri est validé
-    public void NotifySorted()
+    private void ForceReleaseIfHeld()
     {
-        sorted = true;
-        ToastSystem.Instance?.Hide(); // coupe le “toast de tenue” si besoin
+        if (grab == null) return;
+        if (!grab.isSelected) return;
+
+        if (grab.interactionManager != null)
+        {
+            var interactor = grab.firstInteractorSelecting;
+            if (interactor != null)
+                grab.interactionManager.SelectExit(interactor, grab);
+        }
     }
 
-    private string GetTriHint()
+    private void SetVisible(bool visible)
     {
-        switch (type)
+        foreach (var r in rends)
+            if (r) r.enabled = visible;
+
+        foreach (var c in cols)
+            if (c) c.enabled = visible;
+    }
+
+    private void LockToast(float seconds)
+    {
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(CoLockToast(seconds));
+    }
+
+    private IEnumerator CoLockToast(float seconds)
+    {
+        toastLocked = true;
+        yield return new WaitForSeconds(seconds);
+        toastLocked = false;
+    }
+
+    public bool IsResetting => resetting;
+    public bool IsSorted => sorted;
+
+    // ✅ Appelé par la poubelle quand le tri est réussi
+    public void OnSorted(float toastSeconds)
+    {
+        if (sorted) return;
+        sorted = true;
+
+        ForceReleaseIfHeld();
+        LockToast(toastSeconds);
+    }
+
+    // ❌ Appelé par la poubelle quand le tri est mauvais
+    public void OnWrongBin(float toastSeconds, float respawnDelay)
+    {
+        if (resetting || sorted) return;
+
+        ForceReleaseIfHeld();
+        LockToast(toastSeconds);
+
+        if (resetRoutine != null) StopCoroutine(resetRoutine);
+        resetRoutine = StartCoroutine(CoRespawn(respawnDelay));
+    }
+
+    private IEnumerator CoRespawn(float respawnDelay)
+    {
+        resetting = true;
+
+        // "Disparaît" très brièvement
+        SetVisible(false);
+
+        if (rb != null)
         {
-            case TypeDechet.Verre:       return "Poubelle verre (verte)";
-            case TypeDechet.Organique:   return "Compost / biodéchets";
-            case TypeDechet.Papier:
-            case TypeDechet.Emballages:
-            default:                     return "Poubelle jaune (emballages/papiers)";
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.Sleep();
         }
+
+        yield return new WaitForSeconds(respawnDelay);
+
+        // "Réapparaît"
+        transform.SetPositionAndRotation(spawnPos, spawnRot);
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.WakeUp();
+        }
+
+        SetVisible(true);
+        resetting = false;
     }
 }
