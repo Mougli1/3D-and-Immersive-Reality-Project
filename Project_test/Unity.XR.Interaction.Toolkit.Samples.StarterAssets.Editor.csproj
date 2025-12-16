@@ -48,10 +48,10 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.2.3f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Editor/StarterAssets.Editor.asmdef" />
+    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Editor/StarterAssets.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -48,28 +48,28 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.2.3f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/MaterialPipelineHandler.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/DemoSceneAssets/Scripts/MultiAnchorTeleportReticle.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/DynamicMoveProvider.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ControllerInputActionManager.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/GazeInputManager.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/XRPokeFollowAffordance.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/DemoSceneAssets/Scripts/IncrementUIText.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/PermissionsManager.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ObjectSpawner.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ToggleColorToggler.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/ControllerAnimator.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/DestroySelf.cs" />
-    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Scripts/PlatformUnderstanding.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/PermissionsManager.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/TeleportVolumeAnchorAffordanceStateLink.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/PlatformUnderstanding.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/GazeInputManager.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/RotationAxisLockGrabTransformer.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/XRPokeFollowAffordance.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/ControllerAnimator.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/DynamicMoveProvider.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/ClimbTeleportDestinationIndicator.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/DemoSceneAssets/Scripts/MultiAnchorTeleportReticle.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/MaterialPipelineHandler.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/ToggleColorToggler.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/ControllerInputActionManager.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/DestroySelf.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/DemoSceneAssets/Scripts/IncrementUIText.cs" />
+    <Compile Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Scripts/ObjectSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/TunnelingVignette/TunnelingVignette.shader" />
-    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Shaders/UI-NoZTest.shader" />
-    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/Shaders/BiRP_Fresnel.shader" />
-    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.1/Starter Assets/StarterAssets.asmdef" />
+    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Shaders/BiRP_Fresnel.shader" />
+    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/TunnelingVignette/TunnelingVignette.shader" />
+    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/Shaders/UI-NoZTest.shader" />
+    <None Include="Assets/Samples/XR Interaction Toolkit/3.2.2/Starter Assets/StarterAssets.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
