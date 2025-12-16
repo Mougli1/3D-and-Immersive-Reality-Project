@@ -8,6 +8,7 @@ public class SaveData
 {
     public List<string> collectedTrashIds = new List<string>();
     public List<string> seenDialogueIds = new List<string>();
+    public List<string> sortedTrashIds = new List<string>();
 
 }
 
@@ -31,6 +32,14 @@ public class ProgressManager : MonoBehaviour
 
     private bool trashObjectiveCompletedFired = false;
 
+    [SerializeField] private int sortedTotal = 10;
+    public int SortedTotal => sortedTotal;
+
+    public event Action<int, int> OnSortProgressChanged; // sorted, total
+
+    private readonly HashSet<string> sortedTrashSet = new HashSet<string>();
+    public int SortedCount => sortedTrashSet.Count;
+
     private void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }
@@ -43,6 +52,8 @@ public class ProgressManager : MonoBehaviour
         Load();
         RebuildTrashSet();
         RebuildDialogueSet();
+        RebuildSortedSet();
+        NotifySort();
         NotifyTrash();
     }
 
@@ -127,6 +138,7 @@ public class ProgressManager : MonoBehaviour
         data = new SaveData();
         collectedTrashSet.Clear();
         seenDialogueSet.Clear();
+        sortedTrashSet.Clear();
         trashObjectiveCompletedFired = false; // ✅ AJOUT
         Save();
         NotifyTrash();
@@ -148,5 +160,35 @@ public class ProgressManager : MonoBehaviour
         Save();
     }
 
+    private void RebuildSortedSet()
+    {
+        sortedTrashSet.Clear();
+        if (data.sortedTrashIds == null) data.sortedTrashIds = new List<string>();
 
+        foreach (var id in data.sortedTrashIds)
+            if (!string.IsNullOrEmpty(id))
+                sortedTrashSet.Add(id);
+    }
+
+    private void NotifySort()
+    {
+        OnSortProgressChanged?.Invoke(SortedCount, sortedTotal);
+    }
+
+    public bool IsTrashSorted(string id)
+        => !string.IsNullOrEmpty(id) && sortedTrashSet.Contains(id);
+
+    public bool MarkTrashSorted(string id)
+    {
+        if (string.IsNullOrEmpty(id)) return false;
+
+        if (!sortedTrashSet.Add(id)) return false;
+
+        if (data.sortedTrashIds == null) data.sortedTrashIds = new List<string>();
+        data.sortedTrashIds.Add(id);
+
+        Save();
+        NotifySort();
+        return true;
+    }
 }

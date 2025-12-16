@@ -7,20 +7,26 @@ public class TrashBin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Dechet dechet = other.GetComponent<Dechet>();
-
+        // plus robuste que GetComponent<Dechet>() si le collider est sur un enfant
+        Dechet dechet = other.GetComponentInParent<Dechet>();
         if (dechet == null) return;
 
         if (dechet.type == typeAccepte)
         {
             Debug.Log("Bon tri ! " + dechet.type + " dans la bonne poubelle.");
 
-            //  Ouvre le couvercle
+            // Compte “trié”
+            bool added = false;
+            if (ProgressManager.Instance != null)
+                added = ProgressManager.Instance.MarkTrashSorted(dechet.DechetId);
+
+            Debug.Log($"[Sort] id='{dechet.DechetId}' added={added} now={ProgressManager.Instance?.SortedCount}");
+
+            // Ouvre le couvercle
             if (lidScript != null)
                 lidScript.OpenLid();
 
-            Destroy(other.gameObject, 2f);
-
+            Destroy(dechet.gameObject, 2f);
         }
         else
         {
@@ -28,4 +34,3 @@ public class TrashBin : MonoBehaviour
         }
     }
 }
-

@@ -11,6 +11,10 @@ public class InGameMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI trashLabel;
     [SerializeField] private Slider trashProgressBar;
 
+    [SerializeField] private TextMeshProUGUI sortLabel;
+    [SerializeField] private Slider sortProgressBar;
+
+
     [Header("Input")]
     [SerializeField] private InputActionReference toggleMenuAction;
 
@@ -42,6 +46,10 @@ public class InGameMenu : MonoBehaviour
         if (subscribed && ProgressManager.Instance != null)
             ProgressManager.Instance.OnTrashProgressChanged -= OnTrashProgress;
 
+        if (subscribed && ProgressManager.Instance != null)
+            ProgressManager.Instance.OnSortProgressChanged -= OnSortProgress;
+
+
         subscribed = false;
     }
 
@@ -55,8 +63,12 @@ public class InGameMenu : MonoBehaviour
         ProgressManager.Instance.OnTrashProgressChanged += OnTrashProgress;
         subscribed = true;
 
-        // ✅ Init UI immédiate
+        ProgressManager.Instance.OnSortProgressChanged -= OnSortProgress;
+        ProgressManager.Instance.OnSortProgressChanged += OnSortProgress;
+
+        // init
         OnTrashProgress(ProgressManager.Instance.TrashCollected, ProgressManager.Instance.TrashTotal);
+        OnSortProgress(ProgressManager.Instance.SortedCount, ProgressManager.Instance.SortedTotal);
     }
 
     void Start()
@@ -84,6 +96,18 @@ public class InGameMenu : MonoBehaviour
             trashProgressBar.minValue = 0;
             trashProgressBar.maxValue = total;
             trashProgressBar.value = collected;
+        }
+    }
+
+    void OnSortProgress(int sorted, int total)
+    {
+        if (sortLabel) sortLabel.SetText($"Triés : {sorted} / {total}");
+
+        if (sortProgressBar)
+        {
+            sortProgressBar.minValue = 0;
+            sortProgressBar.maxValue = total;
+            sortProgressBar.value = sorted;
         }
     }
 }
