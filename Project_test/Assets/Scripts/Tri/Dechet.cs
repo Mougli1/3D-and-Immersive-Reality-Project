@@ -32,6 +32,7 @@ public class Dechet : MonoBehaviour
     private bool resetting = false;
     private bool sorted = false;
     private Coroutine resetRoutine;
+    private Coroutine lockRoutine;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -112,15 +113,19 @@ public class Dechet : MonoBehaviour
 
     private void LockToast(float seconds)
     {
-        if (gameObject.activeInHierarchy)
-            StartCoroutine(CoLockToast(seconds));
+        if (!gameObject.activeInHierarchy) return;
+
+        toastLocked = true;
+
+        if (lockRoutine != null) StopCoroutine(lockRoutine);
+        lockRoutine = StartCoroutine(CoUnlockToast(seconds));
     }
 
-    private IEnumerator CoLockToast(float seconds)
+    private IEnumerator CoUnlockToast(float seconds)
     {
-        toastLocked = true;
         yield return new WaitForSeconds(seconds);
         toastLocked = false;
+        lockRoutine = null;
     }
 
     public bool IsResetting => resetting;
@@ -132,17 +137,16 @@ public class Dechet : MonoBehaviour
         if (sorted) return;
         sorted = true;
 
-        ForceReleaseIfHeld();
         LockToast(toastSeconds);
+        ForceReleaseIfHeld();
     }
 
-    // Appelé par la poubelle quand le tri est mauvais
     public void OnWrongBin(float toastSeconds, float respawnDelay)
     {
         if (resetting || sorted) return;
 
-        ForceReleaseIfHeld();
         LockToast(toastSeconds);
+        ForceReleaseIfHeld();
 
         if (resetRoutine != null) StopCoroutine(resetRoutine);
         resetRoutine = StartCoroutine(CoRespawn(respawnDelay));

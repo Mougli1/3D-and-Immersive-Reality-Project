@@ -18,15 +18,13 @@ public class TrashBin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // robuste si collider enfant
-        Debug.Log("[TrashBin] Trigger enter: " + other.name);
-
         Dechet dechet = other.GetComponentInParent<Dechet>();
         if (dechet == null) return;
         if (dechet.IsResetting || dechet.IsSorted) return;
 
         if (dechet.type != typeAccepte)
         {
-            ToastSystem.Instance?.Show($"Mauvais tri : {dechet.dechetName} !\nRecommencez.", wrongToastSeconds);
+            ToastSystem.Instance?.Show($"Mauvais tri !\nRecommencez.", wrongToastSeconds);
             dechet.OnWrongBin(wrongToastSeconds, wrongRespawnDelay);
             return;
         }
@@ -36,7 +34,7 @@ public class TrashBin : MonoBehaviour
         if (!added)
             return;
 
-        ToastSystem.Instance?.Show($"Trié : {dechet.dechetName} ({dechet.type})", successToastSeconds);
+        ToastSystem.Instance?.Show($"Bien joué ! Trié : {dechet.dechetName} ({dechet.type})", successToastSeconds);
         dechet.OnSorted(successToastSeconds);
 
         if (lidScript != null)

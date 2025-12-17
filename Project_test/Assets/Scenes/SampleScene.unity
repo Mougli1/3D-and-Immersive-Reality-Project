@@ -1094,7 +1094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &253310509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 237}
   m_SizeDelta: {x: 1400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253310510
@@ -1449,6 +1449,10 @@ PrefabInstance:
     - target: {fileID: 7925523908155867560, guid: 9b885589268d0466cb0baf9fb13b440d, type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925523908155867560, guid: 9b885589268d0466cb0baf9fb13b440d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8488473365037315083, guid: 9b885589268d0466cb0baf9fb13b440d, type: 3}
       propertyPath: m_text
@@ -2487,7 +2491,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b416bbc536e9a4e1a88cb6847ab0aa1a, type: 2}
-  m_sharedMaterial: {fileID: -2298932862790653841, guid: 7a9b3c722e9234dd28b76bf64a65d7dc, type: 2}
+  m_sharedMaterial: {fileID: 4033017472865457173, guid: b416bbc536e9a4e1a88cb6847ab0aa1a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2552,7 +2556,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &432001451
@@ -3331,7 +3335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3713,7 +3717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dechet
   type: 0
   dechetName: Tissue
-  dechetId: cc36928c-8b7a-4f2a-940f-0021ae034a88
+  dechetId: 0a40c400-903d-4c64-a19a-a107a3631b54
   despawnIfAlreadySorted: 1
 --- !u!1 &607401574
 GameObject:
@@ -7086,7 +7090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashBin
   typeAccepte: 2
-  lidScript: {fileID: 0}
+  lidScript: {fileID: 1986603410}
   successToastSeconds: 2.5
   wrongToastSeconds: 3.5
   wrongRespawnDelay: 0.05
@@ -8224,7 +8228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement.ContinuousMoveProvider
   m_Mediator: {fileID: 73298870}
   m_TransformationPriority: 0
-  m_MoveSpeed: 10
+  m_MoveSpeed: 2.5
   m_InAirControlModifier: 0.5
   m_EnableStrafe: 1
   m_EnableFly: 0
@@ -9806,7 +9810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Dechet
   type: 1
   dechetName: Canette de soda
-  dechetId: 1f1f1cff-1e94-47f4-a099-74c44a926c03
+  dechetId: b773d5c5-a1b3-4ebb-9c3c-d019702acc5b
   despawnIfAlreadySorted: 1
 --- !u!1001 &1898721407
 PrefabInstance:
@@ -9859,6 +9863,10 @@ PrefabInstance:
     - target: {fileID: 4602025962161850522, guid: 3773d0ae256dc594ea12defa93a67c26, type: 3}
       propertyPath: m_Name
       value: TrashbinBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032054342236209768, guid: 3773d0ae256dc594ea12defa93a67c26, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
