@@ -60,7 +60,6 @@ Material:
     - _ThicknessRemap: 1
     - _WindPower: 1.5
     - _WindStrength: 0.16
-    - _XRMotionVectorsPass: 1
     m_Colors:
     - _HueVariation: {r: 0, g: 0.9, b: 0.8255172, a: 0.1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
