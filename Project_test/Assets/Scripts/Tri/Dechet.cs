@@ -60,11 +60,13 @@ public class Dechet : MonoBehaviour
 
     private void OnEnable()
     {
+        grab.selectEntered.AddListener(OnGrab);
         grab.selectExited.AddListener(OnRelease);
     }
 
     private void OnDisable()
     {
+        grab.selectEntered.RemoveListener(OnGrab);
         grab.selectExited.RemoveListener(OnRelease);
     }
 
@@ -124,7 +126,7 @@ public class Dechet : MonoBehaviour
     public bool IsResetting => resetting;
     public bool IsSorted => sorted;
 
-    // ✅ Appelé par la poubelle quand le tri est réussi
+    // Appelé par la poubelle quand le tri est réussi
     public void OnSorted(float toastSeconds)
     {
         if (sorted) return;
@@ -134,7 +136,7 @@ public class Dechet : MonoBehaviour
         LockToast(toastSeconds);
     }
 
-    // ❌ Appelé par la poubelle quand le tri est mauvais
+    // Appelé par la poubelle quand le tri est mauvais
     public void OnWrongBin(float toastSeconds, float respawnDelay)
     {
         if (resetting || sorted) return;
@@ -174,5 +176,11 @@ public class Dechet : MonoBehaviour
 
         SetVisible(true);
         resetting = false;
+    }
+
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        if (sorted) return;
+        ToastSystem.Instance?.ShowPersistent($"À trier : {dechetName}");
     }
 }

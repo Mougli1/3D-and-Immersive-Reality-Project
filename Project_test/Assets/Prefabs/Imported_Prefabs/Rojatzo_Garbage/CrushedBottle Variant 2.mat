@@ -44,6 +44,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _DstBlendAlpha: 10
     - _Metallic: 0.776
     - _Smoothness: 0.759
     m_Colors:
