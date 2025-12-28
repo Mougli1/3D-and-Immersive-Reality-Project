@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class WaterCan : MonoBehaviour
 {
     [Header("Arrosage (durée & portée)")]
-    public float pourDuration = 3f;     // durée d'arrosage automatique
+    public float pourDuration = 3f;     // durée d'arrosage automatique (incline + particules actives)
     public float pourRange = 0.7f;      // distance max sous le PourPoint
 
     [Header("Animation (pencher / retour)")]
@@ -22,6 +22,10 @@ public class WaterCan : MonoBehaviour
     private XRGrabInteractable grab;
     private Coroutine pourRoutine;
     private Quaternion visualInitialLocalRot;
+
+    // ✅ Permet d'arroser plusieurs fois : 1 "validation" d'arrosage par appui sur Activate
+    // (si vous restez appuyée pendant 3s, ça ne spam pas ; pour re-arroser, relâchez puis ré-appuyez)
+    private bool didWaterThisPour = false;
 
     private void Awake()
     {
@@ -56,6 +60,9 @@ public class WaterCan : MonoBehaviour
     {
         // Si déjà en train d'arroser, on ignore
         if (pourRoutine != null) return;
+
+        // ✅ reset à chaque nouvel appui, pour permettre un nouvel arrosage
+        didWaterThisPour = false;
 
         pourRoutine = StartCoroutine(PourSequence());
     }
@@ -96,7 +103,9 @@ public class WaterCan : MonoBehaviour
         {
             t += Time.deltaTime;
 
-            DoWaterRaycast();
+            // ✅ Tant qu'on n'a pas encore "validé" un arrosage pour cet appui, on tente le raycast
+            if (!didWaterThisPour)
+                DoWaterRaycast();
 
             yield return null;
         }
@@ -123,7 +132,10 @@ public class WaterCan : MonoBehaviour
             SoilPlot plot = hit.collider.GetComponentInParent<SoilPlot>();
             if (plot != null)
             {
-                plot.WaterPlant(); // votre SoilPlot gère déjà "1 seule fois"
+                plot.WaterPlant();
+
+                // ✅ verrou : un seul arrosage pris en compte par appui
+                didWaterThisPour = true;
             }
         }
     }

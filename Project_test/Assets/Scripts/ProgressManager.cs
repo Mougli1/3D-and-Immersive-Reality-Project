@@ -9,7 +9,15 @@ public class SaveData
     public List<string> collectedTrashIds = new List<string>();
     public List<string> seenDialogueIds = new List<string>();
     public List<string> sortedTrashIds = new List<string>();
+    public List<string> grownTreePlotIds = new List<string>();
+    public List<TreePlotState> treePlots = new List<TreePlotState>();
 
+    [System.Serializable]
+    public class TreePlotState
+    {
+        public string plotId;
+        public int stage;      // -1 = rien, 0 = graine, 1.. = pousse..., 3 = adulte
+    }   
 
 }
 
@@ -41,6 +49,15 @@ public class ProgressManager : MonoBehaviour
     private readonly HashSet<string> sortedTrashSet = new HashSet<string>();
     public int SortedCount => sortedTrashSet.Count;
 
+    [SerializeField] private int treesTotal = 3;
+    public int TreesTotal => treesTotal;
+
+    public event Action<int, int> OnTreeProgressChanged; // grown, total
+
+    private readonly HashSet<string> grownTreeSet = new HashSet<string>();
+    public int TreesGrown => grownTreeSet.Count;
+
+
     private void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }
@@ -56,6 +73,8 @@ public class ProgressManager : MonoBehaviour
         RebuildSortedSet();
         NotifySort();
         NotifyTrash();
+        RebuildGrownTreesSet();
+        NotifyTrees();
     }
 
     private void RebuildDialogueSet()
@@ -140,6 +159,7 @@ public class ProgressManager : MonoBehaviour
         collectedTrashSet.Clear();
         seenDialogueSet.Clear();
         sortedTrashSet.Clear();
+        grownTreeSet.Clear();
         trashObjectiveCompletedFired = false;
         Save();
         NotifyTrash();
@@ -192,4 +212,66 @@ public class ProgressManager : MonoBehaviour
         NotifySort();
         return true;
     }
+    private void RebuildGrownTreesSet()
+    {
+        grownTreeSet.Clear();
+        if (data.grownTreePlotIds == null) data.grownTreePlotIds = new List<string>();
+
+        foreach (var id in data.grownTreePlotIds)
+            if (!string.IsNullOrEmpty(id))
+                grownTreeSet.Add(id);
+    }
+
+    private void NotifyTrees()
+    {
+        OnTreeProgressChanged?.Invoke(TreesGrown, treesTotal);
+    }
+
+    public bool IsTreeGrown(string plotId)
+    => !string.IsNullOrEmpty(plotId) && grownTreeSet.Contains(plotId);
+
+    public bool MarkTreeGrown(string plotId)
+    {
+        if (string.IsNullOrEmpty(plotId)) return false;
+        if (!grownTreeSet.Add(plotId)) return false;
+
+        if (data.grownTreePlotIds == null) data.grownTreePlotIds = new List<string>();
+        data.grownTreePlotIds.Add(plotId);
+
+        Save();
+        NotifyTrees();
+        return true;
+    }
+
+    public int GetTreeStage(string plotId)
+    {
+        if (string.IsNullOrEmpty(plotId)) return -1;
+
+        if (data.treePlots == null) data.treePlots = new List<SaveData.TreePlotState>();
+        var s = data.treePlots.Find(x => x.plotId == plotId);
+        return s != null ? s.stage : -1;
+    }
+
+    public void SetTreeStage(string plotId, int stage)
+    {
+        if (string.IsNullOrEmpty(plotId)) return;
+
+        if (data.treePlots == null) data.treePlots = new List<SaveData.TreePlotState>();
+
+        var s = data.treePlots.Find(x => x.plotId == plotId);
+        if (s == null)
+        {
+            s = new SaveData.TreePlotState { plotId = plotId, stage = stage };
+            data.treePlots.Add(s);
+        }
+        else
+        {
+            s.stage = stage;
+        }
+
+        Save();
+    }
+
+
+
 }

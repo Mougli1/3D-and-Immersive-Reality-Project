@@ -13,6 +13,8 @@ public class InGameMenu : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI sortLabel;
     [SerializeField] private Slider sortProgressBar;
+    [SerializeField] private TextMeshProUGUI treeLabel;
+    [SerializeField] private Slider treeProgressBar;
 
 
     [Header("Input")]
@@ -31,7 +33,7 @@ public class InGameMenu : MonoBehaviour
             toggleMenuAction.action.performed += OnToggle;
         }
 
-        // ✅ On s’abonne quand ProgressManager est prêt
+        // On s’abonne quand ProgressManager est prêt
         bindRoutine = StartCoroutine(BindToProgressManager());
     }
 
@@ -49,6 +51,8 @@ public class InGameMenu : MonoBehaviour
         if (subscribed && ProgressManager.Instance != null)
             ProgressManager.Instance.OnSortProgressChanged -= OnSortProgress;
 
+        if (subscribed && ProgressManager.Instance != null)
+            ProgressManager.Instance.OnTreeProgressChanged -= OnTreeProgress;
 
         subscribed = false;
     }
@@ -66,9 +70,13 @@ public class InGameMenu : MonoBehaviour
         ProgressManager.Instance.OnSortProgressChanged -= OnSortProgress;
         ProgressManager.Instance.OnSortProgressChanged += OnSortProgress;
 
+        ProgressManager.Instance.OnTreeProgressChanged -= OnTreeProgress;
+        ProgressManager.Instance.OnTreeProgressChanged += OnTreeProgress;
+
         // init
         OnTrashProgress(ProgressManager.Instance.TrashCollected, ProgressManager.Instance.TrashTotal);
         OnSortProgress(ProgressManager.Instance.SortedCount, ProgressManager.Instance.SortedTotal);
+        OnTreeProgress(ProgressManager.Instance.TreesGrown, ProgressManager.Instance.TreesTotal);
     }
 
     void Start()
@@ -89,7 +97,7 @@ public class InGameMenu : MonoBehaviour
 
     void OnTrashProgress(int collected, int total)
     {
-        if (trashLabel) trashLabel.SetText($"Déchets : {collected} / {total}");
+        if (trashLabel) trashLabel.SetText($"Déchets collectés: {collected} / {total}");
 
         if (trashProgressBar)
         {
@@ -101,7 +109,7 @@ public class InGameMenu : MonoBehaviour
 
     void OnSortProgress(int sorted, int total)
     {
-        if (sortLabel) sortLabel.SetText($"Triés : {sorted} / {total}");
+        if (sortLabel) sortLabel.SetText($"Déchets triés: {sorted} / {total}");
 
         if (sortProgressBar)
         {
@@ -110,4 +118,17 @@ public class InGameMenu : MonoBehaviour
             sortProgressBar.value = sorted;
         }
     }
+
+    void OnTreeProgress(int grown, int total)
+    {
+        if (treeLabel) treeLabel.SetText($"Arbres plantés : {grown} / {total}");
+
+        if (treeProgressBar)
+        {
+            treeProgressBar.minValue = 0;
+            treeProgressBar.maxValue = total;
+            treeProgressBar.value = grown;
+        }
+    }
+
 }
