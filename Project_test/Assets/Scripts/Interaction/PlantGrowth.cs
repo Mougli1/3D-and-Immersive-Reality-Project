@@ -12,7 +12,7 @@ public class PlantGrowth : MonoBehaviour
     private bool isGrowing = false;
     private bool hasStartedGrowing = false; // 🔒 empêche double arrosage
 
-    private void Start()
+    private void Awake()
     {
         HideAllStages();   // au début, aucune étape visible
     }

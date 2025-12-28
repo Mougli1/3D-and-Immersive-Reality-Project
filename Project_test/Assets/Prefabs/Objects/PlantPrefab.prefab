@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5087486948293739688}
   - component: {fileID: 6808812831275007750}
   m_Layer: 0
-  m_Name: Stage_seed
+  m_Name: Stage_0_Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +85,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -119,7 +122,7 @@ GameObject:
   - component: {fileID: 6337984095388837801}
   - component: {fileID: 4811286038342958668}
   m_Layer: 0
-  m_Name: Plant
+  m_Name: PlantPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,7 +175,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1364922359172550, guid: 1aaf3ef80841d9c4990a27fee328eb1c, type: 3}
       propertyPath: m_Name
-      value: Stage_young_tree
+      value: Stage_2_YoungTree
       objectReference: {fileID: 0}
     - target: {fileID: 1364922359172550, guid: 1aaf3ef80841d9c4990a27fee328eb1c, type: 3}
       propertyPath: m_IsActive
@@ -259,7 +262,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1364922359172550, guid: 1aaf3ef80841d9c4990a27fee328eb1c, type: 3}
       propertyPath: m_Name
-      value: Stage_sprout
+      value: Stage_1_Sprout
       objectReference: {fileID: 0}
     - target: {fileID: 1364922359172550, guid: 1aaf3ef80841d9c4990a27fee328eb1c, type: 3}
       propertyPath: m_IsActive
@@ -346,7 +349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1214657917099862, guid: 78f6b68ad931a824c920d7b953612370, type: 3}
       propertyPath: m_Name
-      value: Stage_adult_tree
+      value: Stage_3_AdultTree
       objectReference: {fileID: 0}
     - target: {fileID: 1214657917099862, guid: 78f6b68ad931a824c920d7b953612370, type: 3}
       propertyPath: m_IsActive
