@@ -84,6 +84,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Shaders/Includes/CTI URP SG Lighting.hlsl" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" />
+    <None Include="Assets/Import/Polytope Studio/Lowpoly_Village/Sources/Shaders/PT_Buildings_Glass_PBR.shader" />
     <None Include="Assets/Import/Outdoor bench/readme.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
     <None Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Shaders/Includes/CTI URP SG BillboardVertex.hlsl" />
@@ -109,11 +110,11 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
+    <None Include="Assets/Import/Polytope Studio/Lowpoly_Environments/Sources/Shaders/PT_Water_Shader.shader" />
     <None Include="Assets/Import/Polytope Studio/Lowpoly_Environments/Sources/Shaders/PT_Vegetation_Flowers_Shader.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
     <None Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components HDRP 12plus/Known Issues.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF.shader" />
-    <None Include="Assets/Import/Polytope Studio/Lowpoly_Environments/Sources/Shaders/PT_Water_Shader.shader" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components HDRP 12plus/Shaders/Includes/CTI_HDRP_12plus_Utils.hlsl" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
