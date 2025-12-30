@@ -79,6 +79,7 @@
     <Compile Include="Assets/Scripts/Animations/RabbitAnimDriver.cs" />
     <Compile Include="Assets/Import/Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/Tri/TrashBin.cs" />
+    <Compile Include="Assets/Scripts/Music/MusicVolumeUI.cs" />
     <Compile Include="Assets/Scripts/InGameMenu.cs" />
     <Compile Include="Assets/Scripts/Dialog/StatueAutoTrigger.cs" />
     <Compile Include="Assets/Scripts/Interaction/TeleportationActivator.cs" />
