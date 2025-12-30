@@ -31,6 +31,8 @@ public class RabbitHopWanderNavMesh : MonoBehaviour
     {
         if (!agent) return;
 
+        if (!agent || !agent.isOnNavMesh) return;
+
         // si pas de destination ou arrivé : on attend un peu puis on choisit une nouvelle destination
         if (!agent.hasPath || agent.remainingDistance <= 0.6f)
         {

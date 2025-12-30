@@ -43,7 +43,11 @@ public class RabbitsAfterMission1 : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Transform p = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(rabbitPrefab, p.position, p.rotation);
+            Vector3 pos = p.position;
+            if (UnityEngine.AI.NavMesh.SamplePosition(pos, out var hit, 2f, UnityEngine.AI.NavMesh.AllAreas))
+                pos = hit.position;
+
+            Instantiate(rabbitPrefab, pos, p.rotation);
         }
 
         spawned = true;
