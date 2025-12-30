@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Assets/Scripts/Interaction/PickupInteractor.cs" />
     <Compile Include="Assets/Import/Forst/CTI Runtime Components/CTI Runtime Components URP 14plus/Scripts/CTI_URP_CustomWind.cs" />
+    <Compile Include="Assets/Import/Rabbits/Demo/Scripts/AnimatorParamatersChange.cs" />
     <Compile Include="Assets/Scripts/TrashQuestManager.cs" />
     <Compile Include="Assets/Scripts/Tri/Dechet.cs" />
     <Compile Include="Assets/Scripts/Tri/TrashBinLidScript.cs" />
@@ -66,13 +67,16 @@
     <Compile Include="Assets/Scripts/Interaction/PlantGrowth.cs" />
     <Compile Include="Assets/Import/Grass And Flowers Pack 1/Example Scene/SimpleTextureDrawing.cs" />
     <Compile Include="Assets/Import/Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/MouseLook.cs" />
+    <Compile Include="Assets/Scripts/Animations/RabbitHopWanderNavMesh.cs" />
     <Compile Include="Assets/Scripts/DialogueAsset.cs" />
     <Compile Include="Assets/Scripts/Tri/TrashBinProximityTrigger.cs" />
     <Compile Include="Assets/Scripts/TrashItem.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/Scripts/VRMenuController.cs" />
     <Compile Include="Assets/Scripts/Interaction/WaterPromptUI.cs" />
+    <Compile Include="Assets/Scripts/Animations/RabbitsAfterMission1.cs" />
     <Compile Include="Assets/Scripts/NarrationSystem.cs" />
+    <Compile Include="Assets/Scripts/Animations/RabbitAnimDriver.cs" />
     <Compile Include="Assets/Import/Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/PlayerMovement.cs" />
     <Compile Include="Assets/Scripts/Tri/TrashBin.cs" />
     <Compile Include="Assets/Scripts/InGameMenu.cs" />

@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45091f957f709485384a3b4f7718cb75, type: 3}
-  m_Name: FinRamassageDechets
+  m_Name: FinPlantation
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
-  id: fin_ramassage
+  id: fin_plantation
   lines:
-  - "Merci d'avoir ramasser les d\xE9chets."
-  - Maintenant la suite
-  - "Maintenant, il faut que tu tries tous les d\xE9chets."
+  - "Super, tu as plant\xE9 tous les arbres !"
+  - "La for\xEAt te remercie"

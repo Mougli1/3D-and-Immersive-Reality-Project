@@ -9,6 +9,7 @@ public class StatueAutoTrigger : MonoBehaviour
     [SerializeField] private DialogueAsset introDialogue;
     [SerializeField] private DialogueAsset ramassageBriefDialogue;
     [SerializeField] private DialogueAsset triBriefDialogue;
+    [SerializeField] private DialogueAsset plantationBriefDialogue;
 
     [Header("Options")]
     [SerializeField] private bool forceIntroFirst = true;
@@ -51,20 +52,25 @@ public class StatueAutoTrigger : MonoBehaviour
 
         bool trashComplete = pm != null && pm.TrashTotal > 0 && pm.TrashCollected >= pm.TrashTotal;
         bool sortComplete  = pm != null && pm.SortedTotal > 0 && pm.SortedCount >= pm.SortedTotal;
+        bool plantComplete = pm != null && pm.TreesTotal > 0 && pm.TreesGrown >= pm.TreesTotal;
 
         DialogueAsset target = introDialogue;
 
-        // 1) Si tri terminé -> triBrief
-        if (sortComplete && triBriefDialogue != null)
+        // Priorité : Plantation finie -> PlantationBrief
+        if (plantComplete && plantationBriefDialogue != null)
         {
-            // Optionnel : on force l’ordre "Intro -> RamassageBrief -> TriBrief"
+            target = plantationBriefDialogue;
+        }
+        // Sinon : Tri terminé -> TriBrief (optionnel : forcer RamassageBrief avant)
+        else if (sortComplete && triBriefDialogue != null)
+        {
             bool briefSeen = (ramassageBriefDialogue == null) || (pm != null && pm.IsDialogueSeen(ramassageBriefDialogue.id));
             if (!forceRamassageBriefFirst || briefSeen)
                 target = triBriefDialogue;
             else if (ramassageBriefDialogue != null)
                 target = ramassageBriefDialogue;
         }
-        // 2) Sinon si ramassage terminé -> ramassageBrief
+        // Sinon : Ramassage terminé -> RamassageBrief
         else if (trashComplete && ramassageBriefDialogue != null)
         {
             target = ramassageBriefDialogue;
@@ -83,6 +89,6 @@ public class StatueAutoTrigger : MonoBehaviour
             narration.StartDialogue(target);
 
         if (debugLogs)
-            Debug.Log($"[StatueAutoTrigger] Play={target.id} seen={seen} trashComplete={trashComplete} sortComplete={sortComplete}");
+            Debug.Log($"[StatueAutoTrigger] Play={target.id} seen={seen} trashComplete={trashComplete} sortComplete={sortComplete} plantComplete={plantComplete}");
     }
 }
