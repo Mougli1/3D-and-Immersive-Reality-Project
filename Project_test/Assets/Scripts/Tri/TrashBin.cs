@@ -24,7 +24,7 @@ public class TrashBin : MonoBehaviour
 
         if (dechet.type != typeAccepte)
         {
-            ToastSystem.Instance?.Show($"Mauvais tri !\nRecommencez.", wrongToastSeconds);
+            ToastSystem.Instance?.Show($"Mauvais tri ! Recommencez.", wrongToastSeconds);
             dechet.OnWrongBin(wrongToastSeconds, wrongRespawnDelay);
             return;
         }

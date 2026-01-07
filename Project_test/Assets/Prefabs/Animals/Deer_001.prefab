@@ -1024,7 +1024,7 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 8
   walkSpeed: 1
-  runSpeed: 3.5
+  runSpeed: 5
   runChance: 0.2
 --- !u!1 &7006190048125819777
 GameObject:
