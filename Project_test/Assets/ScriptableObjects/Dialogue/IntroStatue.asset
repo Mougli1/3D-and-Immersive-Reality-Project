@@ -14,10 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   id: intro
   lines:
-  - "Bonjour, voyageur\u2026 Je suis la Gardienne de Heartwood. Merci d\u2019\xEAtre
-    venu."
-  - "La for\xEAt est belle, mais elle souffre. Les d\xE9chets attirent le danger
-    et blessent les animaux."
-  - "Votre premi\xE8re mission : ramasser tous les d\xE9chets de la zone. Ne laissez
-    rien derri\xE8re vous."
-  - "Ramassez 10 d\xE9chets. Lorsque cela sera fait, revenez me voir."
+  - "Hello, traveler. I\u2019m the Guardian of Heartwood. Thanks for coming."
+  - "This forest is beautiful\u2026 but lately, it hasn\u2019t been doing well."
+  - People left a lot of trash behind, especially around the picnic tables.
+  - "Bottles, cans, wrappers\u2026 it builds up and slowly harms the ground and the
+    water."
+  - "Bottles, cans, wrappers\u2026 it builds up and slowly harms the ground and the
+    water."
+  - "Animals don\u2019t like it. Some get scared away, others can get hurt, or mistake
+    trash for food."
+  - "That\u2019s why you\u2019ll see fewer animals at first\u2026 the forest doesn\u2019t
+    feel safe."
+  - "Your first mission: pick up all the trash in the area. Don\u2019t leave anything
+    behind."
+  - "Collect 10 pieces of trash. When you\u2019re done, come back to me."

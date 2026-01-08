@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   id: fin_plantation
   lines:
-  - "Super, tu as plant\xE9 tous les arbres !"
-  - "La for\xEAt te remercie"
+  - You did it. Three trees have taken root.
+  - Thank you. This will help the forest recover, step by step.
+  - With more shelter and shade, animals will feel safer coming back.
+  - "You didn\u2019t just clean the problem, you helped repair it."
+  - Heartwood is better because of you. Thanks, traveler.

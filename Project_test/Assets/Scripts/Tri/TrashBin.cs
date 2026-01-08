@@ -4,6 +4,8 @@ public class TrashBin : MonoBehaviour
 {
     public Dechet.TypeDechet typeAccepte;
     public TrashBinLidScript lidScript;
+    public ParticleSystem successParticles; 
+
 
     [Header("Toasts")]
     [SerializeField] private float successToastSeconds = 2.5f;
@@ -36,6 +38,8 @@ public class TrashBin : MonoBehaviour
 
         ToastSystem.Instance?.Show($"Bien joué ! Trié : {dechet.dechetName} ({dechet.type})", successToastSeconds);
         dechet.OnSorted(successToastSeconds);
+        if (successParticles != null)
+            successParticles.Play(); 
 
         if (lidScript != null)
             lidScript.OpenLid();

@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   id: fin_trie
   lines:
-  - "Bien jou\xE9. Tu as tri\xE9 tous les d\xE9chets."
-  - Super
-  - 'Maintenant la suite : planter des arbres.'
+  - Well done. You sorted everything correctly.
+  - That means less pollution, more recycling, and fewer mistakes that harm nature.
+  - It also helps keep the forest cleaner for longer.
+  - 'Now the forest needs something more: it needs to rebuild.'
+  - Trees protect the soil, hold water, cool the air, and create shelter for animals.
+  - "They\u2019re small roots today\u2026 but they become real homes tomorrow."
+  - 'Your final mission: plant trees in the soil plots, then water them to help them
+    grow.'
+  - "Plant 2 trees. When you\u2019re done, come back to me."

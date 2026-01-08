@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   id: fin_ramassage
   lines:
-  - "Merci d'avoir ramasser les d\xE9chets."
-  - Maintenant la suite
-  - "Maintenant, il faut que tu tries tous les d\xE9chets."
+  - Thank you. The area looks much cleaner already.
+  - "The forest can breathe again\u2026 and it feels calmer."
+  - With less trash on the ground, animals can come back little by little.
+  - "But we\u2019re not finished: picking up is good, but sorting is just as important."
+  - "If trash isn\u2019t sorted, it often ends up burned or buried, even when it
+    could be recycled."
+  - Sorting helps materials get a second life, and it reduces pollution and waste.
+  - 'Your next mission: sort all the trash into the correct bins.'
+  - When everything is sorted, come back to me.
