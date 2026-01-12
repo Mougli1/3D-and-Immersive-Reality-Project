@@ -53,7 +53,6 @@ public class ForestAmbienceController : MonoBehaviour
         while (ProgressManager.Instance == null)
             yield return null;
 
-        // Subscriptions
         ProgressManager.Instance.OnTrashObjectiveCompleted -= OnTrashDone;
         ProgressManager.Instance.OnTrashObjectiveCompleted += OnTrashDone;
 

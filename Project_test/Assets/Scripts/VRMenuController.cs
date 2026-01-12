@@ -163,6 +163,19 @@ public class VRMenuController : MonoBehaviour
         if (continueLabel != null) continueLabel.text = hasProgress ? "Continue" : "Start";
     }
 
+    public void ExitGame()
+    {
+        // Ne supprime rien. Ferme juste l'app.
+        PlayerPrefs.Save(); // optionnel mais sûr si vous stockez des réglages (ex: volume)
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // pour que ça "marche" quand vous testez dans l'Editor
+    #else
+        Application.Quit(); // en build (Quest/PC), ça ferme l'app
+    #endif
+    }
+
+
     private void MoveRigSoCameraIsAt(Vector3 targetCamPos, float targetYaw)
     {
         if (xrRig == null) return;
