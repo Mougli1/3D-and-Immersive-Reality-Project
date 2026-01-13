@@ -38,14 +38,12 @@ public class TrashQuestManager : MonoBehaviour
 
             if (narration != null && dialogueOnAllCollected != null)
             {
-                // Si rien ne parle, on lance tout de suite
                 if (!narration.IsPlaying)
                 {
                     narration.StartDialogue(dialogueOnAllCollected);
                 }
                 else
                 {
-                    // Sinon on attend la fin du dialogue en cours
                     narration.OnDialogueEnded += OnAnyDialogueEnded;
                 }
             }
@@ -59,7 +57,6 @@ public class TrashQuestManager : MonoBehaviour
             narration.StartDialogue(dialogueOnAllCollected);
         }
 
-        // On se désabonne pour ne pas relancer plusieurs fois
         if (narration != null)
             narration.OnDialogueEnded -= OnAnyDialogueEnded;
     }

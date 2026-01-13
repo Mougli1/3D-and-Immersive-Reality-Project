@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TrashBinLidScript : MonoBehaviour
 {
-    public Transform lid;   // Objet du couvercle
+    public Transform lid;
     public float openAngle = -70f;
     public float speed = 4f;
 

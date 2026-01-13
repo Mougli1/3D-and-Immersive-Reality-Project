@@ -15929,7 +15929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23039,8 +23039,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc4b34c4ea9e43a78f6ab86b7b77b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProgressManager
-  trashTotal: 9
-  sortedTotal: 6
+  trashTotal: 1
+  sortedTotal: 1
   treesTotal: 1
 --- !u!4 &697807588 stripped
 Transform:

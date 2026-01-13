@@ -33,7 +33,6 @@ public class ButterfliesAfterMission2 : MonoBehaviour
         ProgressManager.Instance.OnSortProgressChanged -= OnSortProgress;
         ProgressManager.Instance.OnSortProgressChanged += OnSortProgress;
 
-        // si déjà fini (Continue)
         if (IsSortCompleted())
             SpawnOnce();
     }
@@ -61,7 +60,7 @@ public class ButterfliesAfterMission2 : MonoBehaviour
             Transform p = spawnPoints[i];
             if (!p) continue;
 
-            float y = Random.Range(minHeight, maxHeight);          // <-- ici, par papillon
+            float y = Random.Range(minHeight, maxHeight);
             Vector3 jitter = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(-0.5f, 0.5f));
             Vector3 pos = p.position + jitter + Vector3.up * y;
 

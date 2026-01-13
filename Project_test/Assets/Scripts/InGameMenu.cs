@@ -21,10 +21,7 @@ public class InGameMenu : MonoBehaviour
     [SerializeField] private InputActionReference toggleMenuAction;
 
     [Header("World Placement")]
-    [Tooltip("La caméra XR (Main Camera du XR Origin). Si vide, Camera.main sera utilisée.")]
     [SerializeField] private Transform playerHead;
-
-    [Tooltip("Objet qu'on déplace dans le monde (idéalement le root du canvas/menu). Si vide, on utilise menuPanel.transform.")]
     [SerializeField] private Transform menuRoot;
 
     [SerializeField] private float spawnDistance = 1.4f;
@@ -33,7 +30,7 @@ public class InGameMenu : MonoBehaviour
     [Tooltip("Si le joueur s'éloigne au-delà, on ferme le menu.")]
     [SerializeField] private float autoCloseDistance = 3.0f;
 
-    [Tooltip("0 ou 180 si votre canvas est à l'envers.")]
+    [Tooltip("0 (ou 180 si canvas à l'envers)")]
     [SerializeField] private float facingOffsetY = 0f;
 
     bool isOpen = false;
@@ -134,7 +131,6 @@ public class InGameMenu : MonoBehaviour
 
         menuRoot.position = pos;
 
-        // Face au joueur (yaw only)
         Vector3 dir = (playerHead.position - menuRoot.position);
         dir.y = 0f;
         if (dir.sqrMagnitude > 0.0001f)

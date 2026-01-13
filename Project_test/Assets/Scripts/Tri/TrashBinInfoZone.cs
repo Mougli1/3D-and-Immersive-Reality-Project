@@ -4,8 +4,8 @@ using UnityEngine;
 public class TrashBinInfoZone : MonoBehaviour
 {
     [Header("UI à afficher")]
-    [SerializeField] private GameObject infoPanel;   // votre BinInfoCanvas (ou un child)
-    [SerializeField] private TMP_Text infoText;      // le Text TMP dans le panel
+    [SerializeField] private GameObject infoPanel;
+    [SerializeField] private TMP_Text infoText;
 
     [Header("Texte")]
     [TextArea(2, 6)]
@@ -13,7 +13,7 @@ public class TrashBinInfoZone : MonoBehaviour
 
     [Header("Options")]
     [SerializeField] private bool faceCamera = true;
-    [SerializeField] private Transform panelToRotate; // optionnel (sinon infoPanel.transform)
+    [SerializeField] private Transform panelToRotate;
     [SerializeField] private bool debugLogs = false;
 
     private void Awake()
@@ -34,7 +34,6 @@ public class TrashBinInfoZone : MonoBehaviour
 
         Transform t = panelToRotate != null ? panelToRotate : infoPanel.transform;
 
-        // billboard simple (garde la lisibilité)
         Vector3 lookPos = cam.transform.position;
         lookPos.y = t.position.y;
         t.LookAt(lookPos);

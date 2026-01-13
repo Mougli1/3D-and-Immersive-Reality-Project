@@ -5,7 +5,7 @@ public class MusicVolumeUI : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] private Slider musicSlider;
-    [SerializeField] private AudioSource musicSource; // votre AudioSource qui joue la musique
+    [SerializeField] private AudioSource musicSource;
 
     [Header("Config")]
     [SerializeField] private float maxMusicVolume = 0.2f;
@@ -33,7 +33,7 @@ public class MusicVolumeUI : MonoBehaviour
         value01 = Mathf.Clamp01(value01);
 
         if (musicSource)
-            musicSource.volume = value01 * maxMusicVolume; // <= 0.2 garanti
+            musicSource.volume = value01 * maxMusicVolume;
 
         PlayerPrefs.SetFloat(PREF_KEY, value01);
         PlayerPrefs.Save();

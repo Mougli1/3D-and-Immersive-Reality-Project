@@ -16,7 +16,7 @@ public class SaveData
     public class TreePlotState
     {
         public string plotId;
-        public int stage;      // -1 = rien, 0 = graine, 1.. = pousse..., 3 = adulte
+        public int stage;
     }   
 
 }
@@ -28,7 +28,7 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] private int trashTotal = 10;
     public int TrashTotal => trashTotal;
 
-    public event Action<int, int> OnTrashProgressChanged; // collected, total
+    public event Action<int, int> OnTrashProgressChanged;
 
     private SaveData data = new SaveData();
     private readonly HashSet<string> collectedTrashSet = new HashSet<string>();
@@ -44,7 +44,7 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] private int sortedTotal = 10;
     public int SortedTotal => sortedTotal;
 
-    public event Action<int, int> OnSortProgressChanged; // sorted, total
+    public event Action<int, int> OnSortProgressChanged;
 
     private readonly HashSet<string> sortedTrashSet = new HashSet<string>();
     public int SortedCount => sortedTrashSet.Count;
@@ -52,7 +52,7 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] private int treesTotal = 3;
     public int TreesTotal => treesTotal;
 
-    public event Action<int, int> OnTreeProgressChanged; // grown, total
+    public event Action<int, int> OnTreeProgressChanged;
 
     private readonly HashSet<string> grownTreeSet = new HashSet<string>();
     public int TreesGrown => grownTreeSet.Count;
@@ -271,7 +271,4 @@ public class ProgressManager : MonoBehaviour
 
         Save();
     }
-
-
-
 }

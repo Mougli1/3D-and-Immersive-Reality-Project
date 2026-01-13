@@ -56,12 +56,10 @@ public class StatueAutoTrigger : MonoBehaviour
 
         DialogueAsset target = introDialogue;
 
-        // Priorité : Plantation finie -> PlantationBrief
         if (plantComplete && plantationBriefDialogue != null)
         {
             target = plantationBriefDialogue;
         }
-        // Sinon : Tri terminé -> TriBrief (optionnel : forcer RamassageBrief avant)
         else if (sortComplete && triBriefDialogue != null)
         {
             bool briefSeen = (ramassageBriefDialogue == null) || (pm != null && pm.IsDialogueSeen(ramassageBriefDialogue.id));
@@ -70,13 +68,11 @@ public class StatueAutoTrigger : MonoBehaviour
             else if (ramassageBriefDialogue != null)
                 target = ramassageBriefDialogue;
         }
-        // Sinon : Ramassage terminé -> RamassageBrief
         else if (trashComplete && ramassageBriefDialogue != null)
         {
             target = ramassageBriefDialogue;
         }
 
-        // Force à voir l’intro au moins 1 fois
         if (forceIntroFirst && !introSeen)
             target = introDialogue;
 

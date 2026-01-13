@@ -82,9 +82,8 @@ public class ForestParticlesController : MonoBehaviour
 
     void ApplyPreset(int idx)
     {
-        if (!ps) return; // ultra important
+        if (!ps) return;
 
-        // IMPORTANT : on récupère les modules depuis l'instance PS, à chaque fois
         var main = ps.main;
         var emission = ps.emission;
 

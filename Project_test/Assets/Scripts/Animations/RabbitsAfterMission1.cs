@@ -26,11 +26,9 @@ public class RabbitsAfterMission1 : MonoBehaviour
         while (ProgressManager.Instance == null)
             yield return null;
 
-        // écouter l'event (si le joueur termine pendant la session)
         ProgressManager.Instance.OnTrashObjectiveCompleted -= SpawnOnce;
         ProgressManager.Instance.OnTrashObjectiveCompleted += SpawnOnce;
 
-        // si déjà terminé (Continue / chargement) -> spawn tout de suite
         if (ProgressManager.Instance.IsTrashObjectiveCompleted)
             SpawnOnce();
     }

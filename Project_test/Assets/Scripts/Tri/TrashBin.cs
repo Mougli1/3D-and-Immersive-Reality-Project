@@ -19,7 +19,6 @@ public class TrashBin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // robuste si collider enfant
         Dechet dechet = other.GetComponentInParent<Dechet>();
         if (dechet == null) return;
         if (dechet.IsResetting || dechet.IsSorted) return;

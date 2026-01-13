@@ -7,17 +7,14 @@ public class PlantGrowth : MonoBehaviour
     [Header("0 = seed, 1 = sprout, 2 = young tree, 3 = adult")]
     public GameObject[] stages;
 
-    [Tooltip("Durée (en secondes) pour passer à l’étape suivante APRÈS un arrosage.")]
     public float timeBetweenStages = 5f;
 
     private int currentStage = -1;
     private Coroutine growRoutine;
     private bool isGrowingStep = false;
 
-    // Event pour sauvegarder à chaque étape (1,2,3...)
     public event Action<int> OnStageReached;
 
-    // Optionnel : event quand adulte
     public event Action OnBecameAdult;
 
     public int CurrentStage => currentStage;
@@ -41,15 +38,12 @@ public class PlantGrowth : MonoBehaviour
         ShowStage(LastStageIndex);
     }
 
-    /// IMPORTANT : on affiche l'étape sans déclencher OnStageReached
-    /// (sinon au chargement ça re-sauvegarde et ça fait des effets de bord)
     public void ShowStage(int stage)
     {
         if (stages == null || stages.Length == 0) return;
 
         stage = Mathf.Clamp(stage, 0, stages.Length - 1);
 
-        // Stop une croissance en cours si on force un état (ex: load)
         if (growRoutine != null) StopCoroutine(growRoutine);
         growRoutine = null;
         isGrowingStep = false;
@@ -60,13 +54,13 @@ public class PlantGrowth : MonoBehaviour
         ShowStageInternal(currentStage);
     }
 
-    /// Appelée quand on arrose : lance UN SEUL passage d’étape (après timeBetweenStages)
+    // Appelée quand on arrose : lance un seul passage d’étape 
     public bool WaterOnce()
     {
         if (stages == null || stages.Length == 0) return false;
-        if (currentStage < 0) return false;                   // rien planté
-        if (currentStage >= stages.Length - 1) return false;  // déjà adulte
-        if (isGrowingStep) return false;                      // déjà en train de grandir
+        if (currentStage < 0) return false; // rien planté
+        if (currentStage >= stages.Length - 1) return false; // déjà adulte
+        if (isGrowingStep) return false; // déjà en train de grandir
 
         growRoutine = StartCoroutine(CoGrowOneStep());
         return true;
@@ -82,7 +76,7 @@ public class PlantGrowth : MonoBehaviour
         HideAllStages();
         ShowStageInternal(currentStage);
 
-        // ON SAUVEGARDE ICI (une seule fois)
+        // Sauvegarde
         OnStageReached?.Invoke(currentStage);
 
         if (currentStage >= stages.Length - 1)

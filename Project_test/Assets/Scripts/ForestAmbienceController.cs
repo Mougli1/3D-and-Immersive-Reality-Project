@@ -74,7 +74,7 @@ public class ForestAmbienceController : MonoBehaviour
         sortCompletedFired = IsSortCompleted();
         treeCompletedFired = IsTreeCompleted();
 
-        //currentIndex = 4; // TESTING
+        //currentIndex = 4; // Pour tester
         ApplyPreset(currentIndex);
     }
 

@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class MissionTriGate : MonoBehaviour
 {
-    [SerializeField] private GameObject triRoot; // le parent "Tri" à cacher/montrer
+    [SerializeField] private GameObject triRoot;
 
     Coroutine bindRoutine;
 
     void Awake()
     {
-        // Cacher immédiatement au lancement (avant même ProgressManager)
         if (triRoot)
             triRoot.SetActive(false);
     }
@@ -41,7 +40,7 @@ public class MissionTriGate : MonoBehaviour
         ProgressManager.Instance.OnTrashObjectiveCompleted -= Apply;
         ProgressManager.Instance.OnTrashObjectiveCompleted += Apply;
 
-        Apply(); // état initial (important pour Continue)
+        Apply();
     }
 
     void OnTrashProgress(int collected, int total)
@@ -53,7 +52,6 @@ public class MissionTriGate : MonoBehaviour
     {
         if (!triRoot || ProgressManager.Instance == null) return;
 
-        // Tri visible seulement quand mission 1 (ramassage) est terminée
         bool unlocked = ProgressManager.Instance.IsTrashObjectiveCompleted;
         triRoot.SetActive(unlocked);
     }

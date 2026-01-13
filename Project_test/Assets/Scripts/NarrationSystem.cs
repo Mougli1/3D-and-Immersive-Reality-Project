@@ -11,10 +11,8 @@ public class NarrationSystem : MonoBehaviour {
     [SerializeField] private Button skipButton;
 
     [Header("XR (manette droite)")]
-    [Tooltip("Ex: XRI RightHand Interaction / Activate (trigger)")]
     [SerializeField] private InputActionReference nextAction;
 
-    [Tooltip("Ex: XRI RightHand Interaction / Select (grip/grab)")]
     [SerializeField] private InputActionReference skipAction;
 
     [Header("Optionnel")]

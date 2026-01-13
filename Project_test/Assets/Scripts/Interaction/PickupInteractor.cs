@@ -11,14 +11,13 @@ public class PickupInteractor : MonoBehaviour {
 
     [Header("Objectif")]
     [SerializeField] private int targetCount = 5; // nb d’objets à ramasser
-    [SerializeField] private DialogueAsset debriefDialogue;   // RamassageDebrief.asset
+    [SerializeField] private DialogueAsset debriefDialogue;
 
     private int currentCount = 0;
 
     void Update() {
     if (narration && narration.IsPlaying) return;
 
-    // Nouveau système d’input
     if (Keyboard.current != null && Keyboard.current[pickupKey].wasPressedThisFrame) {
         TryPickupNearest();
     }
@@ -41,7 +40,7 @@ public class PickupInteractor : MonoBehaviour {
 
         if (!closest) { Debug.Log("[Pickup] Aucun objet à portée."); return; }
 
-        closest.SendTo(binEntryPoint);   // TP au-dessus du bac
+        closest.SendTo(binEntryPoint);
         currentCount++;
 
         if (currentCount >= targetCount) {

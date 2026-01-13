@@ -7,7 +7,7 @@ public class DeerWanderNavMesh : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
 
-    [Header("Animator Params (pack Animals FREE)")]
+    [Header("Animator Params")]
     [SerializeField] private string vertParam = "Vert";
 
     [Header("Wander")]
@@ -82,13 +82,13 @@ public class DeerWanderNavMesh : MonoBehaviour
         running = false;
 
         agent.isStopped = true;
-        agent.ResetPath();          // <- très important : enlève la destination
-        agent.velocity = Vector3.zero; // <- coupe le glissement
+        agent.ResetPath();
+        agent.velocity = Vector3.zero;
 
         timer = Random.Range(minIdleTime, maxIdleTime);
 
         if (animator)
-            animator.SetFloat(vertParam, 0f); // <- idle garanti
+            animator.SetFloat(vertParam, 0f);
     }
 
 

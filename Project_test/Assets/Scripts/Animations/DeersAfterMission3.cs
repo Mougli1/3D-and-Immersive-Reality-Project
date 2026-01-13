@@ -12,8 +12,6 @@ public class DeersAfterMission3 : MonoBehaviour
     [SerializeField] private bool onePerPoint = true;
 
     [SerializeField] private int count = 5;
-
-    [Tooltip("On snap la position sur le NavMesh (évite les erreurs).")]
     [SerializeField] private float navMeshSnapRadius = 5f;
 
     bool spawned = false;
@@ -76,7 +74,6 @@ public class DeersAfterMission3 : MonoBehaviour
 
         Vector3 pos = p.position;
 
-        // Snap au NavMesh
         if (NavMesh.SamplePosition(pos, out var hit, navMeshSnapRadius, NavMesh.AllAreas))
             pos = hit.position;
 

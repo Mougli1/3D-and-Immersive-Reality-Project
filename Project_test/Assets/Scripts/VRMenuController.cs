@@ -6,26 +6,25 @@ using TMPro;
 public class VRMenuController : MonoBehaviour
 {
     [Header("Références")]
-    public Transform xrRig;             // VR Player
-    public GameObject locomotionRoot;   // Locomotion
-    public Transform gameStartPoint;    // GameStartPoint
-    public GameObject menuRoot;         // MenuRoot ou MenuCanvas
+    public Transform xrRig; // VR Player
+    public GameObject locomotionRoot;
+    public Transform gameStartPoint;
+    public GameObject menuRoot; // MenuRoot ou MenuCanvas
 
     [Header("UI (Start / Continue / Restart)")]
     public Button continueButton;
     public Button restartButton;
-    public TextMeshProUGUI continueLabel; // optionnel (texte du bouton)
+    public TextMeshProUGUI continueLabel;
 
     [Header("Menu")]
-    public Transform menuSpawnPoint;       // optionnel : si vous voulez un point dédié
-    public GameObject firstMenuPanel;      // optionnel : le panneau "tout premier" du menu
-
+    public Transform menuSpawnPoint;
+    public GameObject firstMenuPanel;
     private Vector3 menuSpawnPos;
     private Quaternion menuSpawnRot;
     private bool menuSpawnCaptured = false;
 
     [Header("XR Camera")]
-    public Transform xrCamera; // la Main Camera dans votre XR Origin
+    public Transform xrCamera; // Main Camera
 
     private Vector3 menuCamPos;
     private float menuCamYaw;
@@ -57,19 +56,17 @@ public class VRMenuController : MonoBehaviour
             menuSpawnCaptured = true;
         }
 
-
         // Bloque la locomotion dès le lancement
         if (locomotionRoot != null)
             locomotionRoot.SetActive(false);
 
-        // Brancher les boutons (si pas déjà fait via l’Inspector)
         if (continueButton != null)
             continueButton.onClick.AddListener(ContinueGame);
 
         if (restartButton != null)
             restartButton.onClick.AddListener(RestartGame);
 
-        // Si on vient d'un Restart => on démarre direct
+        // Si Restart, on démarre direct
         if (autoStartAfterRestart)
         {
             autoStartAfterRestart = false;
@@ -80,10 +77,10 @@ public class VRMenuController : MonoBehaviour
         // Activer/désactiver Continue selon progression
         bool hasProgress = false;
         if (ProgressManager.Instance != null)
-            hasProgress = ProgressManager.Instance.TrashCollected > 0; // simple (mission déchets)
+            hasProgress = ProgressManager.Instance.TrashCollected > 0;
 
         if (continueButton != null)
-            continueButton.interactable = true; // même sans save, ça sert de "Start"
+            continueButton.interactable = true;
 
         if (continueLabel != null)
             continueLabel.text = hasProgress ? "Continue" : "Start";
@@ -96,40 +93,40 @@ public class VRMenuController : MonoBehaviour
 
     public void RestartGame()
     {
-        // Reset progression (et réécrit une save propre à 0)
+        // Reset progression (réécrit une save propre à 0)
         if (ProgressManager.Instance != null)
             ProgressManager.Instance.ResetAllProgress();
 
-        // Recharger la scène pour respawn tous les déchets placés dans la scène
+        // Recharge la scène pour respawn tous les déchets placés dans la scène
         autoStartAfterRestart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void StartGame()
     {
-        // 1) TP le joueur au point de départ
+        //TP le joueur au point de départ
         if (xrRig != null && gameStartPoint != null)
         {
             xrRig.position = gameStartPoint.position;
             xrRig.rotation = gameStartPoint.rotation;
         }
 
-        // 2) 🔓 Réactiver la locomotion
+        // Réactive la locomotion
         if (locomotionRoot != null)
             locomotionRoot.SetActive(true);
 
-        // 3) Masquer le menu
+        // Masque le menu
         if (menuRoot != null)
             menuRoot.SetActive(false);
     }
 
     public void ExitToMainMenu()
     {
-        // 1) Bloquer locomotion (comme au départ)
+        // Bloque locomotion 
         if (locomotionRoot != null)
             locomotionRoot.SetActive(false);
 
-        // 2) Revenir au spawn du menu (position + direction)
+        // Revenir au spawn du menu
         if (xrRig != null)
         {
             var cc = xrRig.GetComponent<CharacterController>();
@@ -140,14 +137,12 @@ public class VRMenuController : MonoBehaviour
             if (cc) cc.enabled = true;
         }
 
-        // 3) Réafficher le menu
+        // Réaffiche le menu
         if (menuRoot != null)
             menuRoot.SetActive(true);
 
-        // 4) Forcer l’affichage du "premier panneau" (si vous en avez plusieurs)
         if (firstMenuPanel != null)
         {
-            // Désactive tous les panels frères, puis active le bon
             var parent = firstMenuPanel.transform.parent;
             if (parent != null)
             {
@@ -157,7 +152,6 @@ public class VRMenuController : MonoBehaviour
             firstMenuPanel.SetActive(true);
         }
 
-        // 5) Rafraîchir le texte Start/Continue
         bool hasProgress = (ProgressManager.Instance != null && ProgressManager.Instance.TrashCollected > 0);
         if (continueButton != null) continueButton.interactable = true;
         if (continueLabel != null) continueLabel.text = hasProgress ? "Continue" : "Start";
@@ -165,13 +159,13 @@ public class VRMenuController : MonoBehaviour
 
     public void ExitGame()
     {
-        // Ne supprime rien. Ferme juste l'app.
-        PlayerPrefs.Save(); // optionnel mais sûr si vous stockez des réglages (ex: volume)
+        // Ferme l'app
+        PlayerPrefs.Save();
 
     #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // pour que ça "marche" quand vous testez dans l'Editor
+        UnityEditor.EditorApplication.isPlaying = false;
     #else
-        Application.Quit(); // en build (Quest/PC), ça ferme l'app
+        Application.Quit();
     #endif
     }
 
@@ -183,7 +177,6 @@ public class VRMenuController : MonoBehaviour
         if (xrCamera == null && Camera.main != null)
             xrCamera = Camera.main.transform;
 
-        // Fallback (si vraiment pas de camera)
         if (xrCamera == null)
         {
             xrRig.SetPositionAndRotation(targetCamPos, Quaternion.Euler(0f, targetYaw, 0f));
@@ -193,17 +186,13 @@ public class VRMenuController : MonoBehaviour
         var cc = xrRig.GetComponent<CharacterController>();
         if (cc) cc.enabled = false;
 
-        // offset caméra en "rig space"
         Vector3 camOffsetLocal = Quaternion.Inverse(xrRig.rotation) * (xrCamera.position - xrRig.position);
 
-        // on n’applique que le yaw
         Quaternion yawRot = Quaternion.Euler(0f, targetYaw, 0f);
         xrRig.rotation = yawRot;
 
-        // offset caméra en world après rotation
         Vector3 camOffsetWorld = xrRig.rotation * camOffsetLocal;
 
-        // positionner le rig pour que la caméra tombe pile sur targetCamPos
         xrRig.position = targetCamPos - camOffsetWorld;
 
         if (cc) cc.enabled = true;

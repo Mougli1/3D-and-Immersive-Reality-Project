@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerCC : MonoBehaviour {
-    public bool useDesktopControls = false; // <-- cochez false sur le VR Player
+    public bool useDesktopControls = false;
 
     public float moveSpeed = 3.5f;
     public float mouseSensitivity = 120f;
@@ -21,7 +21,6 @@ public class PlayerControllerCC : MonoBehaviour {
     public void SetInputEnabled(bool enabled) {
         inputEnabled = enabled;
 
-        // Ne pas toucher au curseur en VR
         if (useDesktopControls) {
             Cursor.lockState = enabled ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible   = !enabled;
@@ -31,7 +30,7 @@ public class PlayerControllerCC : MonoBehaviour {
     private void Update() {
         if (!inputEnabled || !useDesktopControls) return;
 
-        // --- CONTROLES CLAVIER/SOURIS (PC uniquement) ---
+        // Controle clavier souris
         float mx = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float my = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         transform.Rotate(0f, mx, 0f);

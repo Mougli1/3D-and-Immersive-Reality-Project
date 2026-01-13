@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-// Si XRGrabInteractable est introuvable chez vous, ajoutez aussi (XRI 3.x) :
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(XRGrabInteractable))]
@@ -45,7 +44,6 @@ public class TrashItem : MonoBehaviour
 
     IEnumerator Start()
     {
-        // On attend que ProgressManager soit prêt
         while (ProgressManager.Instance == null)
             yield return null;
 
@@ -56,8 +54,6 @@ public class TrashItem : MonoBehaviour
             yield break;
         }
     }
-
-
 
     void OnEnable()
     {
@@ -78,14 +74,13 @@ public class TrashItem : MonoBehaviour
         // Afficher tant qu'on tient
         ToastSystem.Instance?.ShowPersistent($"Ramassé : {trashName}. Vous le rangez dans votre sac.");
 
-        // Démarre le timer de tenue (si déjà lancé, on évite les doublons)
+        // Démarre le timer de tenue
         if (holdRoutine != null) StopCoroutine(holdRoutine);
         holdRoutine = StartCoroutine(CoHoldCollect(args));
     }
 
     void OnRelease(SelectExitEventArgs args)
     {
-        // Si déjà collecté, on ne fait rien (la release peut être déclenchée par notre SelectExit forcé)
         if (collected) return;
 
         // Si on lâche avant la fin : on annule
@@ -101,15 +96,13 @@ public class TrashItem : MonoBehaviour
     IEnumerator CoHoldCollect(SelectEnterEventArgs args)
     {
         yield return new WaitForSeconds(holdToCollectSeconds);
-
-        // Si entre temps on a lâché, grab.isSelected sera faux → on annule
         if (!grab.isSelected || collected)
         {
             holdRoutine = null;
             yield break;
         }
 
-        // ✅ Collecte validée
+        // Collecte validée
         collected = true;
 
         Debug.Log($"[Trash] Collected: {trashName}");
@@ -118,7 +111,6 @@ public class TrashItem : MonoBehaviour
 
         manager?.NotifyTrashCollected(this);
 
-        // On cache le texte au moment où ça "rentre dans le sac"
         ToastSystem.Instance?.Hide();
 
         // Release propre puis destruction

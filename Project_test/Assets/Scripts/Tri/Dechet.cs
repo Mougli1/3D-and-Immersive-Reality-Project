@@ -19,7 +19,6 @@ public class Dechet : MonoBehaviour
     [Tooltip("Si coché, l'objet se détruit au chargement s'il a déjà été trié (Continue).")]
     [SerializeField] private bool despawnIfAlreadySorted = true;
 
-    // --- cache / état ---
     private XRGrabInteractable grab;
     private Rigidbody rb;
     private Collider[] cols;
@@ -156,7 +155,7 @@ public class Dechet : MonoBehaviour
     {
         resetting = true;
 
-        // "Disparaît" très brièvement
+        // Disparaît très brièvement
         SetVisible(false);
 
         if (rb != null)
@@ -168,7 +167,7 @@ public class Dechet : MonoBehaviour
 
         yield return new WaitForSeconds(respawnDelay);
 
-        // "Réapparaît"
+        // Réapparaît
         transform.SetPositionAndRotation(spawnPos, spawnRot);
 
         if (rb != null)

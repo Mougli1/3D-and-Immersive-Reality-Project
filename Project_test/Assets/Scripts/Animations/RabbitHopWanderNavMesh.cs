@@ -7,17 +7,17 @@ public class RabbitHopWanderNavMesh : MonoBehaviour
     [SerializeField] float wanderRadius = 10f;
 
     [Header("Hop Movement")]
-    [SerializeField] float hopMoveTime = 0.35f;   // temps où il avance
-    [SerializeField] float hopPauseTime = 0.15f;  // petite pause (glisse = 0)
-    [SerializeField] float waitMin = 0.8f;        // pause entre 2 destinations
+    [SerializeField] float hopMoveTime = 0.35f; // temps où il avance
+    [SerializeField] float hopPauseTime = 0.15f; // petite pause
+    [SerializeField] float waitMin = 0.8f; // pause entre 2 destinations
     [SerializeField] float waitMax = 2.0f;
 
     NavMeshAgent agent;
 
     float waitTimer;
     float hopTimer;
-    bool hopping;     // on est en train d’aller vers une destination
-    bool movePhase;   // true = avance, false = pause
+    bool hopping;
+    bool movePhase; // true = avance, false = pause
 
     void Awake()
     {

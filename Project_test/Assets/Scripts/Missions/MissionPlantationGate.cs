@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class MissionPlantationGate : MonoBehaviour
 {
-    [SerializeField] private GameObject plantationRoot; // le parent "Plantation" à cacher/montrer
+    [SerializeField] private GameObject plantationRoot;
 
     Coroutine bindRoutine;
 
     void Awake()
     {
-        // Cacher immédiatement au lancement (avant même ProgressManager)
         if (plantationRoot)
             plantationRoot.SetActive(false);
     }
@@ -35,7 +34,7 @@ public class MissionPlantationGate : MonoBehaviour
         ProgressManager.Instance.OnSortProgressChanged -= OnSortProgress;
         ProgressManager.Instance.OnSortProgressChanged += OnSortProgress;
 
-        Apply(); // important pour "Continue"
+        Apply();
     }
 
     void OnSortProgress(int sorted, int total)

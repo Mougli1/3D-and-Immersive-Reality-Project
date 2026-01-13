@@ -47,7 +47,7 @@ public class SoilPlot : MonoBehaviour
         if (plantedPlant != null) return;
         if (ProgressManager.Instance == null) return;
 
-        // Si déjà planté dans la save, on ne replante pas
+        // Si déjà planté dans soil, on ne replante pas
         if (ProgressManager.Instance.GetTreeStage(plotId) >= 0) return;
 
         if (other.CompareTag("Seed"))
@@ -57,8 +57,6 @@ public class SoilPlot : MonoBehaviour
     private void PlantSeed(GameObject seed)
     {
         Destroy(seed);
-
-        // IMPORTANT : ce bloc ne doit être présent qu'UNE fois
         SpawnPlant();
         plantedPlant.ShowStage(0);
         HookPlantEvents();
@@ -97,7 +95,7 @@ public class SoilPlot : MonoBehaviour
         // Sauvegarder toutes les étapes (1,2,3...)
         ProgressManager.Instance.SetTreeStage(plotId, stage);
 
-        // Si dernière étape -> compter pour l'objectif (1/3, 2/3…)
+        // Si dernière étape -> compter pour l'objectif
         if (stage >= plantedPlant.LastStageIndex)
             ProgressManager.Instance.MarkTreeGrown(plotId);
     }
