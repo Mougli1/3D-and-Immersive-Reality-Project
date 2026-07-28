@@ -1,2 +1,8 @@
-Lien google docs :
-https://docs.google.com/document/d/1c7yRyoHhF7RRVx-QTg-sPun-p60HwJ8tFy9bam11-DA/edit?usp=sharing
+# Hearthwood: The Statue's Call
+
+Hearthwood: The Statue's Call is an educational virtual reality experience developed with Unity.  
+The player explores a forest and completes three environmental missions: collecting litter, sorting waste, and planting trees to restore the ecosystem.
+
+## Project Report
+
+📄 [Read the full project report](Hearthwood_Project_Report.pdf)
